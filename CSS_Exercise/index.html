@@ -6,19 +6,24 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
-  </head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
   <body>
     <div class="grid-container">
         <header class="header">
-            <nav>
+            <nav class="header-nav">
                 <a href="/" aria-current="page">Services</a>
                 <a href="/" aria-current="page">Discovery</a>
                 <a href="/" aria-current="page">Weather</a>
                 <a href="/" aria-current="page">My Booking</a>  
             </nav>
             <div class="register">
-                Info
+                <div class="language">
+                    <img src="assets/UK-flag.png" alt="" class="flag"/>
+                    <i class="fas fa-angle-down"></i>
+                </div>
+                <div class="login">Login</div>
+                <button class="signup">Signup</buton>
             </div>
         </header>
         <menu class="menu">
@@ -31,18 +36,80 @@
         </menu>
         <main class="main">
             <div class="content">
-                <div class="form">
-                    form
+                <div class="form-container">
+                    <nav class="form-nav">
+                        <a href="/" aria-current="page" id="hotel">
+                            <i class="fas fa-hotel"></i>
+                            <p>Hotel</p>
+                        </a>
+                        <a href="/" aria-current="page">
+                            <i class="fa fa-plane"></i>
+                            <p>Flight</p>
+                        </a>
+                        <a href="/" aria-current="page">
+                            <i class="fas fa-taxi"></i>
+                            <p>Taxi</p>
+                        </a>
+                        <a href="/" aria-current="page">
+                            <i class="fas fa-car"></i>
+                            <p>Car</p>
+                        </a>
+                    </nav>  
+                    <form class="form">
+                        <div class="form-element" id="destination">
+                            <label for="Destination">Destination:</label>
+                            <div class="input-container">
+                                <i class="fas fa-map-marker"></i>
+                                <input type="text" id="Dest" name="Dest">
+                            </div>
+                        </div>
+                        <div class="form-element">
+                            <label for="Check-in">Check-in Date:</label>
+                            <div class="input-container">
+                                <i class="fas fa-calendar-alt"></i>
+                                <input type="text" id="Check-in" name="Check-in">
+                            </div>
+                        </div>
+                        <div class="form-element">
+                            <label for="Check-out">Check-out Date:</label>
+                            <div class="input-container">
+                                <i class="fas fa-calendar-alt"></i>
+                                <input type="text" id="Check-out" name="Check-out">
+                            </div>
+                        </div>
+                        <div class="form-element">
+                            <label for="Adults">Adults:</label>
+                            <div class="input-container">
+                                <i class="fas fa-user"></i>
+                                <input type="number" id="Adults" name="Adults">
+                            </div>
+                        </div>
+                        <div class="form-element">
+                            <label for="Children">Children:</label>
+                            <div class="input-container">
+                                <i class="fab fa-android"></i>
+                                <input type="number" id="Children" name="Children">
+                            </div>
+                        </div>
+                        <div class="form-element">
+                            <label for="Room">Room:</label>
+                            <div class="input-container">
+                                <i class="fas fa-bed"></i>
+                                <input type="number" id="Rooms" name="Rooms">
+                            </div>
+                        </div>
+                        <button type="submit" class="find-btn"><i class="fa fa-search"></i> Find</button>
+                    </form>
                 </div>
                 <div class="description">
                     <h1>Welcome to</h1>
-                    <h2>WANDERLUST</h2>
+                    <h2>WANDERLUST.</h2>
                     <h3>Jobs fill your pockets, adventure fills your soul</h3>
                 </div>
             </div>
         </main>
         <footer class="footer">
-            Footer
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
         </footer>
     </div>
 

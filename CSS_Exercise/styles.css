@@ -1,34 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;700&display=swap');
 
 .header { grid-area: header; }
 .menu { grid-area: menu; }
 .main { grid-area: main; }
 .footer { grid-area: footer; }
 
+:root {
+    --grey: #a8a8a8;
+    --blue: #1d95eb;
+}
+
+
 .grid-container {
     display: grid;
     grid-template-areas:
-      'menu header header header header header'
-      'menu main main main main main'
-      'menu footer footer footer footer footer';
-    grid-template-rows: 80px auto 80px;
+      'menu header header header header'
+      'menu main main main main'
+      'menu footer footer footer footer';
+    grid-template-rows: 120px auto 80px;
+    grid-template-columns: 0.9fr 1fr 1fr 1fr 1fr;
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
     background: rgba(0, 0, 0, 0.3);
-  }
+}
 
-  body {
+body {
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto';
     background-image: url("assets/Geek-Island_2.webp");
-
-  }
+}
 
 .menu {
     background-color: white;
@@ -41,8 +47,79 @@
 }
 
 .header {
+    color: rgb(208, 208, 208);
     top: 0;
-    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+}
+
+.header-nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20%;
+}
+
+.header-nav a {
+    color: rgb(208, 208, 208);
+    text-decoration: none;
+    padding: 0 40px;
+} 
+
+.header-nav a:hover {
+    color: grey;
+}
+
+.flag {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.register {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.register > * {
+    margin: 0 20px;
+}
+
+.language {
+    display: flex;
+    align-items: center;
+}
+
+.language > i:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+.signup {
+    background-color: white;
+    color: var(--blue);
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.login:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+.signup:hover {
+    background-color: var(--blue);
+    color: white;
 }
 
 .main {
@@ -52,12 +129,10 @@
 
 .footer {
     bottom: 0;
-    /* background-color: blueviolet;  */
 }
 
 .logo {
     margin-top: 50px;
-    /* find another way to center the div */
     height: 50px;
     width: auto;
 }
@@ -66,14 +141,78 @@
     position: absolute;
     top: 50%; 
     left: 50%; 
+    width: 100%;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
+    color: var(--grey);
+}
+
+.content i, p {
+    color: var(--grey);
+    margin: 2px;
+}
+
+.content p {
+    margin-bottom: 10px;
+}
+
+.form-container {
+    place-items: center;
+    background-color: white;
+    width: 30%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.2); 
+    font-size: 16px;
+    margin: 0 6%;
+    font-style: bold;
+
+}
+
+.form-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.form-nav a {
+    color: black;
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid var(--grey);
+    width: 100%;
+}
+
+.form-nav a:hover {
+    border-bottom: 1px solid var(--blue);
+}
+
+.form-nav a:hover i,
+.form-nav a:hover p {
+    color: var(--blue);
+}
+
+#hotel i, #hotel p{
+    color: var(--blue);
+}
+
+#hotel {
+    border-bottom: 1px solid var(--blue);
+}
+
+.form-container:has(p) {
+    margin-bottom: 20px;
 }
 
 .form {
-    place-items: center;
-    background-color: aqua;
+    padding: 8%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .description {
@@ -84,13 +223,13 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly; 
-    margin-bottom: 5px;
+    margin-bottom: 40px;
 }
 
 .socials > i {
-    font-size: 20px;
+    font-size: 25px;
     padding: 10px;
-    background-color: rgb(29, 149, 235);
+    background-color: var(--blue);
     color: white;
     border-radius: 50%; 
     width: 20px; 
@@ -100,18 +239,112 @@
     align-items: center; 
 }
 
-a {
+.socials > i:hover {
+    background-color: rgb(53, 119, 189);
+    cursor: pointer;
+}
+
+.main-nav > a {
     color: white;
     text-decoration: none;
 }
 
+
+.description {
+    color: white;
+    margin-left: 50px;
+}
+
+h1, h2, h3 {
+    color: white;
+    margin: 0;
+}
 h1 {
     font-weight: 400;
-    font-size: 36px;
+    font-size: 60px;
 }
 
 h2 {
-    font-weight: 800;
-    font-size: 65px;
+    font-size: 120px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
+h3 {
+    font-size: 30px;
+}
+
+input {
+    border: none;
+    width: 80%;
+    padding-bottom: 8px;
+    font-size: 17px;
+}
+
+.input-container {
+    margin-top: 10px;
+    border-bottom: 0.5px solid var(--grey);
+    width: 100%;
+}
+
+input:focus {
+    outline-width: 0;
+}
+
+.form-element {
+    border-bottom: 0.5px solid var(--grey);
+    width: 45%;
+    margin-top: 30px;
+}
+
+#destination {
+    width: 100%;
+}
+
+.form i {
+    color: black;
+}
+
+.find-btn {
+    background-color: var(--blue);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: 14px;
+    margin-top: 60px;
+    font-size: 16px;
+}
+
+.find-btn i {
+    color: white;
+    font-size: 20px;
+    margin: 4px;
+}
+
+.find-btn:hover {
+    background-color: rgb(53, 119, 189);
+}
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+  }
+
+  footer > i {
+    color: white;
+    font-size: 40px;
+    margin: 40px;
+  }
+
+ footer > i:hover {
+    color: rgb(192, 191, 191);
+    cursor: pointer;
+  }
+
+  #check-in, #check-out {
+    display: flex;
+  }
