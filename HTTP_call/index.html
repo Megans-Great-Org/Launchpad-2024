@@ -9,11 +9,143 @@
 
 
     <script>
-            fetch('https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=live_SE7eBIpofXk7pqWoiUMJl1iCRDezTISLV1cVh9Otgbyl5d639WjVQd8F2RQM7BZk')
+
+            //works for a certain area
+            fetch('https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226')
             .then(response => response.json())
             .then(jsonRespone => console.log(jsonRespone))
             .catch(error => console.log(error))
             .finally(() => console.log('done'));
+
+            // fetch('https://opensky-network.org/api/states/all')
+            // .then(response => response.json())
+            // .then(jsonRespone => console.log(jsonRespone))
+            // .catch(error => console.log(error))
+            // .finally(() => console.log('done'));
+
+
+
+            //gets all
+            // fetch('https://opensky-network.org/api/states/all?begin=1699212187&end=1699212821')
+            // .then(response => response.json())
+            // .then(jsonRespone => console.log(jsonRespone))
+            // .catch(error => console.log(error))
+            // .finally(() => console.log('done'));
+
+
+            //returns 404/empty array
+            fetch('https://opensky-network.org/api/flights/aircraft?icao24=44028c&begin=1708005633&end=1708007000')
+            .then(response => response.json())
+            .then(jsonRespone => console.log(jsonRespone))
+            .catch(error => console.log(error))
+            .finally(() => console.log('done'));
+
+            // fetch('https://opensky-network.org/api/states/all?time=1707840000&icao24=7c6b2f')
+            // .then(response => response.json())
+            // .then(jsonRespone => console.log(jsonRespone))
+            // .catch(error => console.log(error))
+            // .finally(() => console.log('done'));
+
+
+            // fetch('https://go-kart-api.onrender.com/runs/SN2780_210722_11H00_NADINE_IDUBE_RACEWAY_16_5554.json')
+            // .then(response => response.json())
+            // .then(jsonRespone => console.log(jsonRespone))
+            // .catch(error => console.log(error))
+            // .finally(() => console.log('done'));
+
+            // fetch('https://test.api.amadeus.com/v2/schedule/flights?carrierCode=TP&flightNumber=487&scheduledDepartureDate=2023-08-01')
+            // .then(response => response.json())
+            // .then(jsonRespone => console.log(jsonRespone))
+            // .catch(error => console.log(error))
+            // .finally(() => console.log('done'));
+
+            //new API
+            // const clientId = 'GM4AXPXvWHn0BtjhzflMHqHyuuYahAr5';
+            // const clientSecret = 'EHs3Q1JPqW3VieGg';
+
+            // const requestData = {
+            //     grant_type: 'client_credentials',
+            //     client_id: clientId,
+            //     client_secret: clientSecret
+            // };
+
+            // const requestOptions = {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded'
+            //     },
+            //     body: new URLSearchParams(requestData)
+            // };
+
+            // fetch('https://test.api.amadeus.com/v1/security/oauth2/token', requestOptions)
+            //     .then(response => {
+            //         if (!response.ok) {
+            //             throw new Error('Failed to fetch access token');
+            //         }
+            //         return response.json();
+            //     })
+            //     .then(data => {
+            //         // Handle the response data containing the access token
+            //         console.log(data);
+            //     })
+            //     .catch(error => {
+            //         // Handle any errors
+            //         console.error('Error:', error);
+            //     });
+
+
+
+            // const accessToken = 'jXdAGuPRY4CBLzby56PdsSsc667O';
+
+            // const requestOptions = {
+            //     headers: {
+            //         'Authorization': `Bearer ${accessToken}`
+            //     }
+            // };
+
+            //     fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=SYD&destinationLocationCode=BKK&departureDate=2024-02-15&adults=1&max=2')
+            //     .then(response => {
+            //         if (!response.ok) {
+            //             throw new Error('Failed to fetch flight destinations');
+            //         }
+            //         return response.json();
+            //     })
+            //     .then(data => {
+            //         // Handle the response data containing flight destinations
+            //         console.log(data);
+            //     })
+            //     .catch(error => {
+            //         // Handle any errors
+            //         console.error('Error:', error);
+            //     });
+
+// access_token
+// : 
+// "jXdAGuPRY4CBLzby56PdsSsc667O"
+// application_name
+// : 
+// "Flight-App"
+// client_id
+// : 
+// "GM4AXPXvWHn0BtjhzflMHqHyuuYahAr5"
+// expires_in
+// : 
+// 1799
+// scope
+// : 
+// ""
+// state
+// : 
+// "approved"
+// token_type
+// : 
+// "Bearer"
+// type
+// : 
+// "amadeusOAuth2Token"
+// username
+// : 
+// "bellvlekkie@gmail.com"
     </script>
 </body>
 </html>
