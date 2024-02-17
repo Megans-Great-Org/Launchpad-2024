@@ -41,13 +41,19 @@ const weatherConditions = [
 ];
 
 cities.forEach(city => {
-  const marker = L.marker(city).addTo(map); 
+  const marker = L.marker([city.lat, city.lng], {
+    riseOnHover: true,
+    title: city.city_name,
+    autoPanFocus: true,
+  }).addTo(map); 
+  marker.options.riseOnHover = true;
+  
   const cityList = document.getElementById("city-list");
   const a = document.createElement("a");
-  a.href = "#";
+  a.href = "#"; //remember to set href
   a.innerText = city.city_name;
   cityList.appendChild(a);
-  //sets the marker to display the weather for the cty when clicked
+  
   marker.on('click', function() {
     const { lat, lng } = marker.getLatLng();
 
@@ -100,5 +106,34 @@ cities.forEach(city => {
   });
 });
 
-fun
-  
+
+let redIcon = L.icon({
+  iconUrl: 'assets/red-pin.png',
+
+  iconSize:     [25, 39], 
+  shadowSize:   [50, 64],
+  iconAnchor:   [12, 39], 
+  shadowAnchor: [4, 62],  
+  popupAnchor:  [-3, -76] 
+});
+
+let tempMarker = L.marker([0,0], {icon: redIcon});
+var on = false;
+document.getElementById('drop-pin').addEventListener('click', function() {
+  tempMarker.remove();
+  on = !on;
+  if (on) {
+      document.getElementById('drop-pin').classList.add('clicked-button');
+      map.on('click', function(event) {
+        tempMarker.remove();
+        tempMarker = L.marker(event.latlng, {icon: redIcon}).addTo(map);
+    });
+  } else {
+    document.getElementById('drop-pin').classList.remove('clicked-button');
+    map.on('click', function(event) {
+      tempMarker.remove();
+    });
+  }
+});
+
+

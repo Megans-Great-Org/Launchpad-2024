@@ -11,7 +11,8 @@ html, body {
 }
 
 header {
-  background-image: linear-gradient(to right, #53BCE9, #fff);
+  background-image: linear-gradient(to right, #2680C2, #53BCE9, whitesmoke);  
+  color: whitesmoke;
   flex: 0 0 50px;
   height: 5vh;
   display: flex;
@@ -99,7 +100,6 @@ menu {
   padding: 0%;
 }
 
-
 .city-list {
   height: 70%; 
   width: 0; 
@@ -107,7 +107,7 @@ menu {
   z-index: 1; 
   bottom: 0;
   right: 0; 
-  background-image: linear-gradient(to right, #53BCE9, #53BCE9, #fff);
+  background-image: linear-gradient(to right, #2680C2, #53BCE9);
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px;
   transition: width 0.5s;
@@ -115,7 +115,6 @@ menu {
   border-top-left-radius: 20px;
 }
 
-/* The sidepanel links */
 .city-list a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -127,7 +126,7 @@ menu {
 }
 
 .city-list a:hover {
-  color: #f1f1f1;
+  color: whitesmoke;
   cursor: pointer;
 }
 
@@ -139,7 +138,7 @@ menu {
   margin-left: 50px;
 }
 
-.buttons {
+.buttons-container {
   position: absolute;
   top: 40px;
   right: 0;
@@ -156,13 +155,29 @@ menu {
   background-color: #fff;
   border: 2px solid #ccc;
   border-radius: 2px;
-  color: #52BBE8;
+  color: #2680C2;
   font-size: 20px;
   cursor: pointer;
   height: 50px;
   width: 50px;
   margin: 5px;
 }
+
+.clicked-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2680C2;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+}
+
 
 .openbtn:hover {
   background-color: #b2b0b0;
