@@ -1,28 +1,51 @@
 body {
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 }
-html, body, #map {
+
+html, body {
   height: 100vh;
   width: 100vw;
+}
+
+header {
+  background-image: linear-gradient(to right, #53BCE9, #fff);
+  flex: 0 0 50px;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  flex: 1;
+  height: 95vh;
 }
 
 .location-container {
   position: absolute;
   display: flex;
-  bottom: -10px;
+  bottom: 0;
   padding-bottom: 10px;
   width: 100vw;
   height: 30vh;
   z-index: 1000;
   background-color: rgb(25, 133, 149);
-  border-radius: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-
 }
 
 .city-name {
@@ -70,4 +93,77 @@ html, body, #map {
   font: 1rem sans-serif;
   text-decoration: none;
   margin-top: 10px;
+}
+
+menu {
+  padding: 0%;
+}
+
+
+.city-list {
+  height: 70%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1; 
+  bottom: 0;
+  right: 0; 
+  background-image: linear-gradient(to right, #53BCE9, #53BCE9, #fff);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px;
+  transition: width 0.5s;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+/* The sidepanel links */
+.city-list a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+  
+}
+
+.city-list a:hover {
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
+.city-list .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.buttons {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  z-index: 1004;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  color: #52BBE8;
+  font-size: 20px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+}
+
+.openbtn:hover {
+  background-color: #b2b0b0;
 }
