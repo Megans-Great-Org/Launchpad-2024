@@ -26,18 +26,18 @@ const cities = [
 ];
 
 const weatherConditions = [
-  { code: 0, condition: 'Clear' },
-  { code: 1, condition: 'Partly Cloudy' },
-  { code: 2, condition: 'Cloudy' },
-  { code: 3, condition: 'Overcast' },
-  { code: 4, condition: 'Fog' },
-  { code: 5, condition: 'Freezing Fog' },
-  { code: 6, condition: 'Drizzle' },
-  { code: 7, condition: 'Rain' },
-  { code: 8, condition: 'Freezing Rain' },
-  { code: 9, condition: 'Snow' },
-  { code: 10, condition: 'Heavy Snow' },
-  { code: 11, condition: 'Sleet' },
+  { code: 0, condition: 'Clear', image: 'assets/clear.jpeg', colour: '#F8C68C'},
+  { code: 1, condition: 'Partly Cloudy', image: 'assets/partly-clouds.jpeg', colour: '#52BBE8'},
+  { code: 2, condition: 'Cloudy', image: 'assets/partly-clouds.jpeg', colour: '#52BBE8'},
+  { code: 3, condition: 'Overcast', image: 'assets/partly-clouds.jpeg', colour: '#52BBE8'},
+  { code: 4, condition: 'Fog', image: 'assets/fog.jpeg,', colour: '#D28491'},
+  { code: 5, condition: 'Freezing Fog', image: 'assets/fog.jpeg', colour: '#D28491'},
+  { code: 6, condition: 'Drizzle', image: 'assets/rain.jpeg', colour: '#348CB4'},
+  { code: 7, condition: 'Rain', image: 'assets/rain.jpeg', colour: '#348CB4'},
+  { code: 8, condition: 'Freezing Rain', image: 'assets/thunder-storm.jpeg', colour: '#194356'},
+  { code: 9, condition: 'Snow', image: 'assets/thunder-storm.jpeg', colour: '#194356'},
+  { code: 10, condition: 'Heavy Snow', image: 'assets/thunder-storm.jpeg', colour: '#194356'},
+  { code: 11, condition: 'Sleet', image: 'assets/thunder-storm.jpeg', colour: '#194356'},
 ];
 
 
@@ -80,6 +80,12 @@ cities.forEach(city => {
 
       const weather = document.getElementsByClassName("weather");
       weather[0].innerText = weatherConditions[data.current.weather_code].condition;
+
+      const locationContainer = document.getElementsByClassName("location-container");
+      locationContainer[0].style.backgroundImage = `url(${weatherConditions[data.current.weather_code].image})`;
+
+      const weatherCircle = document.getElementsByClassName("weather-circle");
+      weatherCircle[0].style.backgroundColor = weatherConditions[data.current.weather_code].colour;
 
       const range = document.getElementsByClassName("temperature-range");
       range[0].innerText = `L:  ${Math.round(data.daily.temperature_2m_min)}* H:${Math.round(data.daily.temperature_2m_max)}*`;
