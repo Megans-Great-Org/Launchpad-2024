@@ -32,6 +32,12 @@ h1 {
   height: 95vh;
 }
 
+.container {
+  container-type: inline-size;
+  container-name: location-container;
+}
+
+
 .location-container {
   position: absolute;
   display: flex;
@@ -49,9 +55,20 @@ h1 {
   align-items: center;
 }
 
+
+@media screen and (min-width: 600px) {
+  .location-container {
+    height: 94vh;
+    width: 20vw;
+    right: 0;
+    border-radius: 20px 0 0 20px;
+  }
+}
+
 .city-name {
   color: white;
   font: 1rem sans-serif;
+  margin: 10px;
 }
 
 .weather-circle {
@@ -72,6 +89,14 @@ h1 {
   align-items: center;
 
   color: white;
+}
+
+@media screen and (min-width: 600px) {
+  .weather-circle {
+    height: 200px;
+    width: 200px;
+    right: 0;
+  }
 }
 
 .weather {
@@ -101,7 +126,7 @@ menu {
 }
 
 .city-list {
-  height: 70%; 
+  height: calc(100vh - 200px);
   width: 0; 
   position: fixed; 
   z-index: 1; 
@@ -115,6 +140,17 @@ menu {
   border-top-left-radius: 20px;
 }
 
+@media screen and (min-width: 600px) {
+  .city-list {
+    right: auto; 
+    left: 0; 
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+}
+
 .city-list a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -122,7 +158,6 @@ menu {
   color: #fff;
   display: block;
   transition: 0.3s;
-  
 }
 
 .city-list a:hover {
@@ -141,7 +176,7 @@ menu {
 
 .buttons-container {
   position: absolute;
-  top: 40px;
+  top: 45px;
   right: 0;
   z-index: 1004;
   display: flex;
@@ -149,12 +184,21 @@ menu {
   align-items: center;
 }
 
+@media screen and (min-width: 600px) {
+  .buttons-container {
+    right: auto; 
+    left: 50px; 
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+  }
+}
+
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  border: 2px solid #ccc;
+  border: 2px solid #8f8f8f;
   border-radius: 2px;
   color: #2680C2;
   font-size: 20px;
@@ -162,6 +206,12 @@ menu {
   height: 50px;
   width: 50px;
   margin: 5px;
+}
+
+@media screen and (min-width: 600px) {
+  .button {
+
+  }
 }
 
 .clicked-button {

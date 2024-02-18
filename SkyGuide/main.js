@@ -94,6 +94,8 @@ document.getElementById('drop-pin').addEventListener('click', function() {
       map.on('click', function(event) {
         tempMarker.remove();
         tempMarker = L.marker(event.latlng, {icon: redIcon}).addTo(map);
+        let city = {lat: event.latlng.lat, lng: event.latlng.lng, city_name: "New Location"};
+        getWeatherData(city);
     });
   } else {
     document.getElementById('drop-pin').classList.remove('clicked-button');
