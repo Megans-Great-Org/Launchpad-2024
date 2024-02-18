@@ -1,22 +1,22 @@
 {
     "0": {
-      "image": "assets/clear.jpeg",
+      "image": "public/backgrounds/clear.jpeg",
       "colour": "#F8C68C"
     },
     "1": {
-      "image": "assets/partly-clouds.jpeg",
+      "image": "public/backgrounds/partly-clouds.jpeg",
       "colour": "#52BBE8"
     },
     "2": {
-      "image": "assets/fog.jpeg",
+      "image": "public/backgrounds/fog.jpeg",
       "colour": "#D28491"
     },
     "3": {
-      "image": "assets/rain.jpeg",
+      "image": "public/backgrounds/rain.jpeg",
       "colour": "#348CB4"
     },
     "4": {
-      "image": "assets/thunder-storm.jpeg",
+      "image": "public/backgrounds/thunder-storm.jpeg",
       "colour": "#194356"
     }
   }
