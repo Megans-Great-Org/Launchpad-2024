@@ -17,16 +17,6 @@
     
   </head>
   <body>  
-    <script>
-      function toggleNav() {
-        var sidepanel = document.getElementById("city-list");
-        if (sidepanel.style.width === "250px") {
-          sidepanel.style.width = "0";
-        } else {
-          sidepanel.style.width = "250px";
-        }
-      }
-    </script>
     <header>
       <h1>SkyGuide</h1>
     </header>
@@ -37,20 +27,27 @@
       </div>
       <menu>
         <div id='city-list' class="city-list">
-          <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+          <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
         </div>
-        <button id='city-list-button' class="button" onclick="toggleNav()"><i class="fas fa-list-ul" aria-hidden="true"></i></button>
+        <button id='city-list-button' class="button"><i class="fas fa-list-ul" aria-hidden="true"></i></button>
       </menu>
     </div>
     <div class="location-container" id="location-container">
-      <h1 class="city-name">PRETORIA</h1>
-      <div class="weather-circle">
-        <h2 class="weather">Cloudy</h2>
-        <h3 class="temperature">20*</h3>
-        <h4 class="temperature-range">L:18* H:25*</h4>
+      <div class="daily-weather-container">
+        <div class="daily-weather-container-overlay">
+          <h1 class="city-name">PRETORIA</h1>
+          <div class="weather-circle">
+            <h2 class="weather">Cloudy</h2>
+            <h3 class="temperature">20*</h3>
+            <h4 class="temperature-range">L:18* H:25*</h4>
+          </div>
+        </div>
       </div>
-      <div class="see-more">
-        see more
+      <div id="hourly-weather-container">
+        <div id="hourly-weather-list">
+          <div class="hourly-weather">
+          </div>
+        </div>
       </div>
     </div>
   </body>
