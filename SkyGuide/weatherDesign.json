@@ -1,0 +1,22 @@
+{
+    "0": {
+      "image": "assets/clear.jpeg",
+      "colour": "#F8C68C"
+    },
+    "1": {
+      "image": "assets/partly-clouds.jpeg",
+      "colour": "#52BBE8"
+    },
+    "2": {
+      "image": "assets/fog.jpeg",
+      "colour": "#D28491"
+    },
+    "3": {
+      "image": "assets/rain.jpeg",
+      "colour": "#348CB4"
+    },
+    "4": {
+      "image": "assets/thunder-storm.jpeg",
+      "colour": "#194356"
+    }
+  }

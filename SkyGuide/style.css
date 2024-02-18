@@ -3,6 +3,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 html,
@@ -41,7 +42,8 @@ h1 {
 .location-container {
   position: absolute;
   display: flex;
-  bottom: 0;
+  bottom: -100%;
+
   padding-bottom: 10px;
   width: 100vw;
   height: 30vh;
@@ -53,14 +55,27 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: bottom 0.5s ease;
+}
+
+.location-container.show {
+  bottom: 0;
+  transition: bottom 0.5s ease;
 }
 
 @media screen and (min-width: 600px) {
   .location-container {
     height: 94vh;
     width: 20vw;
-    right: 0;
     border-radius: 20px 0 0 20px;
+    right: -100%;
+    transition: right 0.5s ease;
+    overflow-x: hidden;
+  }
+
+  .location-container.show {
+    right: 0;
+    transition: right 0.5s ease;
   }
 }
 
@@ -207,6 +222,10 @@ menu {
   margin: 5px;
 }
 
+.button:hover {
+  background-color: #dad9d9;
+}
+
 @media screen and (min-width: 600px) {
   .button {
   }
@@ -227,6 +246,19 @@ menu {
   margin: 5px;
 }
 
+.clicked-button:hover {
+  color: #2680c2;
+  background-color: #fff;
+}
+
 .openbtn:hover {
   background-color: #b2b0b0;
 }
+
+.hand-pointer {
+  cursor: pointer;
+}
+.default-cursor {
+  cursor: default;
+}
+
