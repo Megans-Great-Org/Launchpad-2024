@@ -1,6 +1,6 @@
 import './style.css';
-import weatherData from './weatherData.json';
-import weatherDesign from './weatherDesign.json';
+import getWeatherData from './apiHelper.js';
+
 import cities from './cities.json';
 const map = L.map('map').setView([-30.5595, 22.9375], 5);
 
@@ -24,7 +24,6 @@ cities.forEach((city) => {
 
   a.addEventListener('click', function (event) {
     event.preventDefault();
-    //close the nav
     map.setView([city.lat, city.lng], map.getZoom());
     getWeatherData(city);
   });
@@ -33,9 +32,7 @@ cities.forEach((city) => {
 
   marker.on('click', function () {
     const { lat, lng } = marker.getLatLng();
-
     map.setView([lat, lng], map.getZoom());
-
     getWeatherData(city);
   });
 });
@@ -52,7 +49,7 @@ let redIcon = L.icon({
 });
 
 let tempMarker = L.marker([0, 0], { icon: redIcon });
-var on = false;
+let on = false;
 let mapContainer = document.querySelector('.leaflet-container');
 document.getElementById('drop-pin').addEventListener('click', function () {
   tempMarker.remove();
@@ -78,57 +75,3 @@ document.getElementById('drop-pin').addEventListener('click', function () {
     });
   }
 });
-
-function getWeatherData(city) {
-  const locationContainer = document.getElementById('location-container');
-  locationContainer.classList.remove('show');
-  const params = {
-    latitude: city.lat,
-    longitude: city.lng,
-    current: ['temperature_2m', 'weather_code'],
-    hourly: ['temperature_2m', 'weather_code'],
-    daily: ['weather_code', 'temperature_2m_max', 'temperature_2m_min'],
-    timezone: 'Africa/Cairo',
-    forecast_days: 1,
-  };
-  const queryString = new URLSearchParams(params).toString();
-  const url = `https://api.open-meteo.com/v1/forecast?${queryString}`;
-
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      let weatherCondition = weatherData[data.current.weather_code];
-
-      const name = document.getElementsByClassName('city-name');
-      name[0].innerText = city.city_name;
-
-      const temperature = document.getElementsByClassName('temperature');
-      temperature[0].innerText = `${Math.round(data.current.temperature_2m)}*`;
-
-      const weather = document.getElementsByClassName('weather');
-      weather[0].innerText = weatherCondition.day.description;
-
-      const locationContainer =
-        document.getElementsByClassName('location-container');
-      locationContainer[0].style.backgroundImage = `url(${weatherDesign[weatherCondition.designNumber].image})`;
-
-      const weatherCircle = document.getElementsByClassName('weather-circle');
-      weatherCircle[0].style.backgroundColor =
-        weatherDesign[weatherCondition.designNumber].colour;
-
-      const range = document.getElementsByClassName('temperature-range');
-      range[0].innerText = `L:  ${Math.round(data.daily.temperature_2m_min)}* H:${Math.round(data.daily.temperature_2m_max)}*`;
-    })
-    .catch((error) => {
-      console.error('Error fetching data:', error);
-    });
-  setTimeout(function () {
-    locationContainer.classList.add('show');
-  }, 200);
-}
