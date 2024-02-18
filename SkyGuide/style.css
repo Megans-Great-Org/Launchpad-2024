@@ -5,13 +5,14 @@ body {
   flex-direction: column;
 }
 
-html, body {
+html,
+body {
   height: 100vh;
   width: 100vw;
 }
 
 header {
-  background-image: linear-gradient(to right, #2680C2, #53BCE9, whitesmoke);  
+  background-image: linear-gradient(to right, #2680c2, #53bce9, whitesmoke);
   color: whitesmoke;
   flex: 0 0 50px;
   height: 5vh;
@@ -37,7 +38,6 @@ h1 {
   container-name: location-container;
 }
 
-
 .location-container {
   position: absolute;
   display: flex;
@@ -54,7 +54,6 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-
 
 @media screen and (min-width: 600px) {
   .location-container {
@@ -127,12 +126,12 @@ menu {
 
 .city-list {
   height: calc(100vh - 200px);
-  width: 0; 
-  position: fixed; 
-  z-index: 1; 
+  width: 0;
+  position: fixed;
+  z-index: 1;
   bottom: 0;
-  right: 0; 
-  background-image: linear-gradient(to right, #2680C2, #53BCE9);
+  right: 0;
+  background-image: linear-gradient(to right, #2680c2, #53bce9);
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px;
   transition: width 0.5s;
@@ -142,8 +141,8 @@ menu {
 
 @media screen and (min-width: 600px) {
   .city-list {
-    right: auto; 
-    left: 0; 
+    right: auto;
+    left: 0;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     border-bottom-right-radius: 20px;
@@ -163,7 +162,7 @@ menu {
 .city-list a:hover {
   color: whitesmoke;
   cursor: pointer;
-  background-color: #2680C2;
+  background-color: #2680c2;
 }
 
 .city-list .closebtn {
@@ -186,8 +185,8 @@ menu {
 
 @media screen and (min-width: 600px) {
   .buttons-container {
-    right: auto; 
-    left: 50px; 
+    right: auto;
+    left: 50px;
     justify-content: flex-start;
     flex-direction: row-reverse;
   }
@@ -200,7 +199,7 @@ menu {
   background-color: #fff;
   border: 2px solid #8f8f8f;
   border-radius: 2px;
-  color: #2680C2;
+  color: #2680c2;
   font-size: 20px;
   cursor: pointer;
   height: 50px;
@@ -210,7 +209,6 @@ menu {
 
 @media screen and (min-width: 600px) {
   .button {
-
   }
 }
 
@@ -218,7 +216,7 @@ menu {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2680C2;
+  background-color: #2680c2;
   border: 2px solid #ccc;
   border-radius: 2px;
   color: #fff;
@@ -228,7 +226,6 @@ menu {
   width: 50px;
   margin: 5px;
 }
-
 
 .openbtn:hover {
   background-color: #b2b0b0;
