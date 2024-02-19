@@ -4,6 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  font-family:monospace, monaco;
 }
 
 html,
@@ -62,7 +63,7 @@ h1 {
   transition: bottom 0.5s ease;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1025px ) {
   .location-container {
     height: 94vh;
     width: 20vw;
@@ -83,6 +84,8 @@ h1 {
   color: white;
   font: 1rem sans-serif;
   margin: 20px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .weather-circle {
@@ -106,7 +109,7 @@ h1 {
   color: white;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1025px ) {
   .weather-circle {
     height: 200px;
     width: 200px;
@@ -131,7 +134,7 @@ h1 {
   overflow-y: hidden; 
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1025px ) {
   .daily-weather-container-overlay {
     display: flex;
     justify-content: center;
@@ -160,7 +163,7 @@ h1 {
   overflow-y: hidden; 
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1025px ) {
   .daily-weather-container {
     position: absolute;
     top: 0;
@@ -217,7 +220,7 @@ menu {
   border-top-left-radius: 20px;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1025px ) {
   .city-list {
     right: auto;
     left: 0;
@@ -251,6 +254,11 @@ menu {
   margin-left: 50px;
 }
 
+.city-list .closebtn:hover{
+  background-color: transparent;
+  color: grey;
+}
+
 .buttons-container {
   position: absolute;
   top: 45px;
@@ -261,7 +269,7 @@ menu {
   align-items: center;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1025px ) {
   .buttons-container {
     right: auto;
     left: 50px;
@@ -287,11 +295,6 @@ menu {
 
 .button:hover {
   background-color: #dad9d9;
-}
-
-@media screen and (min-width: 600px) {
-  .button {
-  }
 }
 
 .clicked-button {
@@ -338,7 +341,7 @@ menu {
   bottom: 0;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1025px ) {
   #hourly-weather-container {
     height: 40vh;
   }
@@ -362,7 +365,7 @@ menu {
 }
 
 .time {
-  font-size: 20px;
+  font-size: 18px;
   margin: 0%;
 }
 
