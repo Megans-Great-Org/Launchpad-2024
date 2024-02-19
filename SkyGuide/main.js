@@ -77,12 +77,14 @@ document.getElementById('drop-pin').addEventListener('click', function () {
 });
 
 function toggleNav() {
-  var sidepanel = document.getElementById("city-list");
-  if (sidepanel.style.width === "250px") {
-    sidepanel.style.width = "0";
+  var sidepanel = document.getElementById('city-list');
+  if (sidepanel.style.width === '250px') {
+    sidepanel.style.width = '0';
   } else {
-    sidepanel.style.width = "250px";
+    sidepanel.style.width = '250px';
   }
 }
-document.getElementById("city-list-button").addEventListener("click", toggleNav);
-document.getElementById("closebtn").addEventListener("click", toggleNav);
+document
+  .getElementById('city-list-button')
+  .addEventListener('click', toggleNav);
+document.getElementById('closebtn').addEventListener('click', toggleNav);
