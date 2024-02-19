@@ -23,6 +23,7 @@ cities.forEach((city) => {
   a.innerText = city.city_name;
 
   a.addEventListener('click', function (event) {
+    toggleNav();
     event.preventDefault();
     map.setView([city.lat, city.lng], map.getZoom());
     getWeatherData(city);

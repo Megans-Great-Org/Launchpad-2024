@@ -5,7 +5,7 @@ export function populateCurrentWeather(data, city) {
   let weatherCondition = weatherData[data.current.weather_code];
 
   const name = document.getElementsByClassName('city-name');
-  name[0].innerText = city.city_name;
+  name[0].innerText = city.city_name.toUpperCase();
 
   const temperature = document.getElementsByClassName('temperature');
   temperature[0].innerText = `${Math.round(data.current.temperature_2m)}°`;

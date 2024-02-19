@@ -131,6 +131,7 @@ h1 {
   z-index: 1000;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  border-top-right-radius: 0;
   overflow-y: hidden; 
 }
 
@@ -148,6 +149,7 @@ h1 {
     z-index: 1000;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    border-top-right-radius: 0;
   }
 }
 
@@ -159,7 +161,7 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover; 
   border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-right-radius: 0;
   overflow-y: hidden; 
 }
 
@@ -171,6 +173,7 @@ h1 {
     height: 60%;
     background-repeat: no-repeat;
     background-size: cover; 
+    border-top-right-radius: 0;
   }
 }
 
@@ -294,7 +297,8 @@ menu {
 }
 
 .button:hover {
-  background-color: #dad9d9;
+  background-color: #2680c2;
+  color: #fff;
 }
 
 .clicked-button {
