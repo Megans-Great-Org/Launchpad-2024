@@ -2,7 +2,7 @@ import weatherData from './weatherData.json';
 import weatherDesign from './weatherDesign.json';
 
 export function populateCurrentWeather(data, city) {
-  let weatherCondition = weatherData[data.current.weather_code];
+  const weatherCondition = weatherData[data.current.weather_code];
 
   const name = document.getElementsByClassName('city-name');
   name[0].innerText = city.city_name.toUpperCase();
@@ -27,7 +27,7 @@ export function populateCurrentWeather(data, city) {
 }
 
 export function populateHourlyWeather(data) {
-  let weatherCondition = weatherData[data.current.weather_code];
+  const weatherCondition = weatherData[data.current.weather_code];
   document.getElementById('hourly-weather-container').style.background =
     `linear-gradient(${weatherDesign[weatherCondition.designNumber].colour}, ${weatherDesign[weatherCondition.designNumber].blendColour})`;
 
