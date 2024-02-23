@@ -20,7 +20,6 @@ export async function getWeatherData(city : CityInterface) {
 	params.append('timezone', 'Africa/Cairo');
 	params.append('forecast_days', '1');
 
-	console.log(params.toString());
 	const url = `${baseUrl}?${params.toString()}`;
 
 	try {

@@ -56,7 +56,7 @@ const redIcon = L.icon({
 let tempMarker = L.marker([0, 0], { icon: redIcon });
 let on = false;
 const mapContainer = document.querySelector('.leaflet-container');
-let dropPin = document.getElementById('drop-pin');
+const dropPin = document.getElementById('drop-pin');
 if (dropPin) dropPin.addEventListener('click', function () {
   tempMarker.remove();
   on = !on;
@@ -66,7 +66,7 @@ if (dropPin) dropPin.addEventListener('click', function () {
     map.on('click', function (event) {
       tempMarker.remove();
       tempMarker = L.marker(event.latlng, { icon: redIcon }).addTo(map);
-      let city = {
+      const city = {
         lat: event.latlng.lat,
         lng: event.latlng.lng,
         city_name: 'New Location',
