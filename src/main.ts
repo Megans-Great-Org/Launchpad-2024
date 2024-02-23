@@ -1,9 +1,9 @@
-import './style.css';
-import getWeatherData from './apiHelper.ts';
-import citiesJson from './json_data/citiesJson.json';
-import L from "leaflet";
 import 'leaflet/dist/leaflet.css';
+import L from "leaflet";
+import citiesJson from './json_data/citiesJson.json';
+import getWeatherData from './apiHelper.ts';
 import { CityInterface } from './interfaces';
+import './style.css';
 //remember to order the imports
 const map = L.map('map').setView([-30.5595, 22.9375], 5); //set view to South Africa
 

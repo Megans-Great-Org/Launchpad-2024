@@ -1,6 +1,6 @@
 import {CityInterface, CurrentWeatherDataInterface, HourlyWeatherDataInterface, WeatherInfoJsonInterface, WeatherDesignJsonInterface} from "./interfaces"
-import weatherInfoJson from './json_data/weatherInfoJson.json';
 import weatherDesignJson from './json_data/weatherDesignJson.json';
+import weatherInfoJson from './json_data/weatherInfoJson.json';
 
 export function populateCurrentWeather(currentWeatherData: CurrentWeatherDataInterface, city: CityInterface) {
   const locationContainer = document.getElementById('location-container');

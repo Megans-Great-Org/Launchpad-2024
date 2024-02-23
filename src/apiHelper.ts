@@ -1,9 +1,9 @@
+import { CityInterface, CurrentWeatherDataInterface, HourlyWeatherDataInterface, WeatherDataResponseInterface } from '././interfaces';
 import {
   populateCurrentWeather,
   populateHourlyWeather,
 } from './domManipulation';
 
-import { CityInterface, CurrentWeatherDataInterface, HourlyWeatherDataInterface, WeatherDataResponseInterface } from '././interfaces';
 
 export async function getWeatherData(city : CityInterface) {
 	const locationContainer = document.getElementById('location-container');
@@ -56,7 +56,7 @@ export async function getWeatherData(city : CityInterface) {
 			if (locationContainer) locationContainer.classList.add('show');
 		}
 	} catch (error) {
-		console.error('There was a problem with the fetch operation:', error);
+		console.error('Unable to get response', error);
 	}
 }
 
