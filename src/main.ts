@@ -1,25 +1,29 @@
 import './style.css';
-import getWeatherData from './apiHelper.js';
-
-import cities from './cities.json';
-const map = L.map('map').setView([-30.5595, 22.9375], 5);
+import getWeatherData from './apiHelper.ts';
+import citiesJson from './json_data/citiesJson.json';
+import L from "leaflet";
+import 'leaflet/dist/leaflet.css';
+import { CityInterface } from './interfaces';
+//remember to order the imports
+const map = L.map('map').setView([-30.5595, 22.9375], 5); //set view to South Africa
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: '© OpenStreetMap',
 }).addTo(map);
 
+const cities: CityInterface[] = citiesJson;
+
 cities.forEach((city) => {
   const marker = L.marker([city.lat, city.lng], {
     riseOnHover: true,
     title: city.city_name,
-    autoPanFocus: true,
+    autoPanOnFocus: true,
   }).addTo(map);
   marker.options.riseOnHover = true;
 
   const cityList = document.getElementById('city-list');
   const a = document.createElement('a');
-  a.href = '#'; //remember to set href
   a.innerText = city.city_name;
 
   a.addEventListener('click', function (event) {
@@ -29,7 +33,7 @@ cities.forEach((city) => {
     getWeatherData(city);
   });
 
-  cityList.appendChild(a);
+  (cityList) ? cityList.appendChild(a) : null;
 
   marker.on('click', function () {
     const { lat, lng } = marker.getLatLng();
@@ -38,7 +42,7 @@ cities.forEach((city) => {
   });
 });
 
-let redIcon = L.icon({
+const redIcon = L.icon({
   iconUrl: 'public/red-pin.png',
 
   iconSize: [25, 39],
@@ -51,13 +55,14 @@ let redIcon = L.icon({
 
 let tempMarker = L.marker([0, 0], { icon: redIcon });
 let on = false;
-let mapContainer = document.querySelector('.leaflet-container');
-document.getElementById('drop-pin').addEventListener('click', function () {
+const mapContainer = document.querySelector('.leaflet-container');
+let dropPin = document.getElementById('drop-pin');
+if (dropPin) dropPin.addEventListener('click', function () {
   tempMarker.remove();
   on = !on;
   if (on) {
-    document.getElementById('drop-pin').classList.add('clicked-button');
-    mapContainer.classList.add('hand-pointer');
+    if(dropPin) dropPin.classList.add('clicked-button');
+    if (mapContainer) mapContainer.classList.add('hand-pointer');
     map.on('click', function (event) {
       tempMarker.remove();
       tempMarker = L.marker(event.latlng, { icon: redIcon }).addTo(map);
@@ -69,8 +74,8 @@ document.getElementById('drop-pin').addEventListener('click', function () {
       getWeatherData(city);
     });
   } else {
-    document.getElementById('drop-pin').classList.remove('clicked-button');
-    mapContainer.classList.remove('hand-pointer');
+    if (dropPin) dropPin.classList.remove('clicked-button');
+    if (mapContainer) mapContainer.classList.remove('hand-pointer');
     map.on('click', function () {
       tempMarker.remove();
     });
@@ -78,14 +83,17 @@ document.getElementById('drop-pin').addEventListener('click', function () {
 });
 
 function toggleNav() {
-  var sidepanel = document.getElementById('city-list');
-  if (sidepanel.style.width === '250px') {
-    sidepanel.style.width = '0';
-  } else {
-    sidepanel.style.width = '250px';
+  const sidepanel = document.getElementById('city-list');
+  if (sidepanel) {
+    if (sidepanel.style.width === '250px') {
+      sidepanel.style.width = '0';
+    } else {
+      sidepanel.style.width = '250px';
+    }
   }
 }
-document
-  .getElementById('city-list-button')
-  .addEventListener('click', toggleNav);
-document.getElementById('closebtn').addEventListener('click', toggleNav);
+
+const listButton = document.getElementById('city-list-button');
+if (listButton) listButton.addEventListener('click', toggleNav);
+const closeButton = document.getElementById('close-button');
+if (closeButton) closeButton.addEventListener('click', toggleNav);

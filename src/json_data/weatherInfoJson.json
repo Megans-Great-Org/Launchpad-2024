@@ -183,7 +183,8 @@
 		"night":{
 			"description":"Light Snow",
 			"image":"http://openweathermap.org/img/wn/13n@2x.png"
-		}
+		},
+		"designNumber": 4
 	},
 	"73":{
 		"day":{
@@ -193,7 +194,8 @@
 		"night":{
 			"description":"Snow",
 			"image":"http://openweathermap.org/img/wn/13n@2x.png"
-		}
+		},
+		"designNumber": 4
 	},
 	"75":{
 		"day":{
@@ -203,7 +205,8 @@
 		"night":{
 			"description":"Heavy Snow",
 			"image":"http://openweathermap.org/img/wn/13n@2x.png"
-		}
+		},
+		"designNumber": 4
 	},
 	"77":{
 		"day":{
@@ -213,7 +216,8 @@
 		"night":{
 			"description":"Snow Grains",
 			"image":"http://openweathermap.org/img/wn/13n@2x.png"
-		}
+		},
+		"designNumber": 4
 	},
 	"80":{
 		"day":{
@@ -256,7 +260,8 @@
 		"night":{
 			"description":"Light Snow Showers",
 			"image":"http://openweathermap.org/img/wn/13n@2x.png"
-		}
+		},
+		"designNumber": 4
 	},
 	"86":{
 		"day":{
@@ -266,7 +271,8 @@
 		"night":{
 			"description":"Snow Showers",
 			"image":"http://openweathermap.org/img/wn/13n@2x.png"
-		}
+		},
+		"designNumber": 4
 	},
 	"95":{
 		"day":{
