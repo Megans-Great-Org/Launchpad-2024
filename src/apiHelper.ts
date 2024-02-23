@@ -3,7 +3,7 @@ import {
   populateHourlyWeather,
 } from './domManipulation';
 
-import { CityInterface, CurrentWeatherDataInterface, HourlyWeatherDataInterface } from '././interfaces';
+import { CityInterface, CurrentWeatherDataInterface, HourlyWeatherDataInterface, WeatherDataResponseInterface } from '././interfaces';
 
 export async function getWeatherData(city : CityInterface) {
 	const locationContainer = document.getElementById('location-container');
@@ -20,6 +20,7 @@ export async function getWeatherData(city : CityInterface) {
 	params.append('timezone', 'Africa/Cairo');
 	params.append('forecast_days', '1');
 
+	console.log(params.toString());
 	const url = `${baseUrl}?${params.toString()}`;
 
 	try {
@@ -33,26 +34,28 @@ export async function getWeatherData(city : CityInterface) {
 		if (!response.ok) {
 			throw new Error('Network response was not ok');
 		}
-		const data = await response.json();
-		if (data?.current?.temperature && data?.current?.temperature && data?.daily?.temperature_2m_max && data?.daily?.temperature_2m_min) {
-		const currentWeatherData: CurrentWeatherDataInterface = {
-			temperature: data.current.temperature_2m,
-			temperatureMax: data.daily.temperature_2m_max,
-			temperatureMin: data.daily.temperature_2m_min,
-			weatherCode: data.current.weather_code,
-		};
+		const data : WeatherDataResponseInterface = await response.json();
+		if (data?.current?.temperature_2m && data?.current?.temperature_2m && data?.daily?.temperature_2m_max.length>0 && data?.daily?.temperature_2m_min.length>0) {
+			const currentWeatherData: CurrentWeatherDataInterface = {
+				temperature : data.current.temperature_2m,
+				temperatureMax: data.daily.temperature_2m_max[0],
+				temperatureMin: data.daily.temperature_2m_min[0],
+				weatherCode: data.current.weather_code,
+			};
 
-		const hourlyWeatherData: HourlyWeatherDataInterface = {
-			dataList: data.hourly.map((hourlyData: any) => ({
-				temperature: hourlyData.temperature_2m,
-				weatherCode: hourlyData.weather_code,
-			})),
-		};
+			const hourlyWeatherData: HourlyWeatherDataInterface = {	
+				dataList: data.hourly.temperature_2m.map((temperature, index) => {
+					return {
+						temperature,
+						weatherCode: data.hourly.weather_code[index],
+					};
+				}),
+			};
 
-		populateCurrentWeather(currentWeatherData, city);
-		populateHourlyWeather(hourlyWeatherData, currentWeatherData);
-	}
-		console.log(data); 
+			populateCurrentWeather(currentWeatherData, city);
+			populateHourlyWeather(hourlyWeatherData, currentWeatherData);
+			if (locationContainer) locationContainer.classList.add('show');
+		}
 	} catch (error) {
 		console.error('There was a problem with the fetch operation:', error);
 	}
