@@ -1,11 +1,15 @@
 import 'leaflet/dist/leaflet.css';
-import L from "leaflet";
+import L, {Map} from "leaflet";
 import getWeatherData from './apiHelper.ts';
-import { CityInterface } from './interfaces';
-import { toggleNav } from './domManipulation.ts';
+import { CityInterface} from '././interfaces';
+import {
+    toggleNav,
+    populateCurrentWeather,
+    populateHourlyWeather,
+  } from './domManipulation';
 
 export function initializeMap(): L.Map {
-    const map = L.map('map').setView([-30.5595, 22.9375], 5); //set view to South Africa
+    const map = new Map('map').setView([-30.5595, 22.9375], 5); //set view to South Africa
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -25,23 +29,23 @@ export function addPinsToMap(map: L.Map, cities: CityInterface[]): void {
         marker.options.riseOnHover = true;
       
         const cityList = document.getElementById('city-list');
-        const a = document.createElement('a');
-        a.innerText = city.city_name;
+        const cityButton = document.createElement('button');
+        cityButton.innerText = city.city_name;
       
-        a.addEventListener('click', function (event) {
+        cityButton.addEventListener('click', function (event) {
           toggleNav();
           event.preventDefault();
           map.setView([city.lat, city.lng], map.getZoom());
           getWeatherData(city);
         });
       
-        (cityList) ? cityList.appendChild(a) : null;
+        (cityList) ? cityList.appendChild(cityButton) : null;
       
         marker.on('click', function () {
           const { lat, lng } = marker.getLatLng();
           map.setView([lat, lng], map.getZoom());
-          getWeatherData(city);
         });
+        setWeather(city);
       });
 }
 
@@ -75,7 +79,7 @@ export function addCustomPindropFunctionality (map: L.Map): void {
               lng: event.latlng.lng,
               city_name: 'New Location',
             };
-            getWeatherData(city);
+            setWeather(city);
           });
         } else {
           if (dropPin) dropPin.classList.remove('clicked-button');
@@ -85,4 +89,17 @@ export function addCustomPindropFunctionality (map: L.Map): void {
           });
         }
       });
+}
+
+async function setWeather(city: CityInterface): Promise<void> {
+    const locationContainer = document.getElementById('location-container');
+    if (locationContainer) locationContainer.classList.remove('show');
+    try {
+        const [currentWeatherData, hourlyWeatherData] = await getWeatherData(city);
+        populateCurrentWeather(currentWeatherData, city);
+        populateHourlyWeather(hourlyWeatherData, currentWeatherData);
+        if (locationContainer) locationContainer.classList.add('show');
+    } catch (error) {
+        console.error('An error occurred while fetching data:', error);
+    }
 }

@@ -30,6 +30,18 @@ h1 {
   padding: 0;
 }
 
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
 #map {
   flex: 1;
   height: 95vh;
@@ -224,7 +236,7 @@ menu {
 }
 
 @media screen and (min-width: 1025px ) {
-  .city-list {
+  #city-list {
     right: auto;
     left: 0;
     border-bottom-left-radius: 0;
@@ -234,22 +246,26 @@ menu {
   }
 }
 
-.city-list a {
+#city-list button {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 20px;
   color: #fff;
   display: block;
   transition: 0.3s;
+  width: 100%;
+  text-align: left;
+
 }
 
-.city-list a:hover {
+#city-list button:hover {
   color: whitesmoke;
   cursor: pointer;
   background-color: #2680c2;
 }
 
-.city-list .close-button {
+#city-list .close-button {
+  color: white;
   position: absolute;
   top: 0;
   right: 25px;
@@ -257,7 +273,7 @@ menu {
   margin-left: 50px;
 }
 
-.city-list .close-button{
+#city-list .close-button:hover{
   background-color: transparent;
   color: grey;
 }

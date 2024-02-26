@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-chromewebdata_2024-02-23_13-47-38.report.html
+chromewebdata_*.report.html
 
 # Editor directories and files
 .vscode/*

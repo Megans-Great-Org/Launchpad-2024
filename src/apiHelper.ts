@@ -1,14 +1,8 @@
 import { CityInterface, CurrentWeatherDataInterface, HourlyWeatherDataInterface, WeatherDataResponseInterface } from '././interfaces';
-import {
-  populateCurrentWeather,
-  populateHourlyWeather,
-} from './domManipulation';
 
 
-export async function getWeatherData(city : CityInterface) {
-	const locationContainer = document.getElementById('location-container');
-	if (locationContainer) locationContainer.classList.remove('show');
 
+export async function getWeatherData(city : CityInterface): Promise<[CurrentWeatherDataInterface, HourlyWeatherDataInterface]>{
 	const baseUrl = 'https://api.open-meteo.com/v1/forecast';
 		
 	const params = new URLSearchParams();
@@ -46,13 +40,13 @@ export async function getWeatherData(city : CityInterface) {
 				}),
 			};
 
-			populateCurrentWeather(currentWeatherData, city);
-			populateHourlyWeather(hourlyWeatherData, currentWeatherData);
-			if (locationContainer) locationContainer.classList.add('show');
+			return [currentWeatherData, hourlyWeatherData];
 		}
 	} catch (error) {
 		console.error('There was a problem with the fetch operation:', error);
+		throw error;
 	}
+	throw new Error('Weather data could not be fetched');
 }
 
 export default getWeatherData;

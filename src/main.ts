@@ -1,4 +1,3 @@
-import 'leaflet/dist/leaflet.css';
 import citiesJson from './json_data/citiesJson.json';
 import { initializeMap, addPinsToMap, addCustomPindropFunctionality } from './map.ts';
 import { addListButtonClickListener, addCloseButtonClickListener } from './domManipulation.ts';

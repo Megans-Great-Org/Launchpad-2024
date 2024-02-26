@@ -96,5 +96,8 @@ export function addListButtonClickListener(): void {
 export function addCloseButtonClickListener(): void {
   const closeButton = document.getElementById('close-button');
   if (closeButton) closeButton.addEventListener('click', toggleNav);
-  
+}
+
+export function addCity(name: string): void {
+
 }
