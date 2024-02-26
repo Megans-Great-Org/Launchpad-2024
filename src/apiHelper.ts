@@ -23,15 +23,10 @@ export async function getWeatherData(city : CityInterface) {
 	const url = `${baseUrl}?${params.toString()}`;
 
 	try {
-		const response = await fetch(url, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		});
+		const response = await fetch(url);
 
 		if (!response.ok) {
-			throw new Error('Network response was not ok');
+			throw new Error('Unable to get response');
 		}
 		const data : WeatherDataResponseInterface = await response.json();
 		if (data?.current?.temperature_2m && data?.current?.temperature_2m && data?.daily?.temperature_2m_max.length>0 && data?.daily?.temperature_2m_min.length>0) {
@@ -56,7 +51,7 @@ export async function getWeatherData(city : CityInterface) {
 			if (locationContainer) locationContainer.classList.add('show');
 		}
 	} catch (error) {
-		console.error('Unable to get response', error);
+		console.error('There was a problem with the fetch operation:', error);
 	}
 }
 

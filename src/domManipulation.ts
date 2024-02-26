@@ -76,3 +76,25 @@ export function populateHourlyWeather(hourlyWeatherData : HourlyWeatherDataInter
     (hourlyWeatherList) ? hourlyWeatherList.appendChild(hourlyWeather) : null;
   }
 }
+
+export function toggleNav(): void {
+  const sidepanel = document.getElementById('city-list');
+  if (sidepanel) {
+      if (sidepanel.style.width === '250px') {
+          sidepanel.style.width = '0';
+      } else {
+          sidepanel.style.width = '250px';
+      }
+  }
+}
+
+export function addListButtonClickListener(): void {
+  const listButton = document.getElementById('city-list-button');
+  if (listButton) listButton.addEventListener('click', toggleNav);
+}
+
+export function addCloseButtonClickListener(): void {
+  const closeButton = document.getElementById('close-button');
+  if (closeButton) closeButton.addEventListener('click', toggleNav);
+  
+}
