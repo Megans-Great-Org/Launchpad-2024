@@ -2,6 +2,11 @@ import {CityInterface, CurrentWeatherDataInterface, HourlyWeatherDataInterface, 
 import weatherDesignJson from './json_data/weatherDesignJson.json';
 import weatherInfoJson from './json_data/weatherInfoJson.json';
 
+addDropPinClickListener(() => {
+  toggleCustomPinButton();
+  toggleMapHandPointer();
+});
+
 export function populateCurrentWeather(currentWeatherData: CurrentWeatherDataInterface, city: CityInterface) {
   const locationContainer = document.getElementById('location-container');
   (locationContainer) ?  locationContainer.classList.remove('show') : 0;
@@ -98,6 +103,47 @@ export function addCloseButtonClickListener(): void {
   if (closeButton) closeButton.addEventListener('click', toggleNav);
 }
 
-export function addCity(name: string): void {
+export function toggleClass(element: Element, className: string) {
+  if (element.classList.contains(className)) {
+      element.classList.remove(className);
+  } else {
+      element.classList.add(className);
+  }
+}
 
+function toggleCustomPinButton(): void {
+  const dropPin = document.getElementById('drop-pin');
+  if (dropPin) toggleClass(dropPin, "clicked-button");
+}
+
+function toggleMapHandPointer(): void {
+  const mapContainer = document.querySelector('.leaflet-container');
+  if (mapContainer) toggleClass(mapContainer, "hand-pointer");
+}
+
+export function toggleWeatherContainer(): void {
+  const locationContainer = document.getElementById('location-container');
+  if (locationContainer) toggleClass(locationContainer, "show");
+}
+
+export function addDropPinClickListener(callback: () => void): void {
+  const dropPin = document.getElementById('drop-pin');
+  if (dropPin) {
+      dropPin.addEventListener('click', callback);
+  }
+}
+
+export function cityFunctionality(city: CityInterface, weatherCallback: (city: CityInterface) => void, mapSetViewCallback: () => void): void {
+  const cityList = document.getElementById('city-list');
+  const cityButton = document.createElement('button');
+  cityButton.innerText = city.city_name;
+  
+  cityButton.addEventListener('click', function (event) {
+      toggleNav();
+      event.preventDefault();
+      mapSetViewCallback();
+      weatherCallback(city);
+  });
+  
+  if (cityList) cityList.appendChild(cityButton);
 }
