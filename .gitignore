@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 
+chromewebdata_*.report.html
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

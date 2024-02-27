@@ -1,23 +1,33 @@
-/* eslint-disable prettier/prettier */
-// eslint-disable-next-line no-undef
 module.exports = {
-    env: {
-      browser: true,
-      es2024: true,
+    "env": {
+        "browser": true,
+        "es2021": true
     },
-    extends: [
-      'eslint:recommended',
-      'plugin:prettier/recommended',
+    "extends": "standard-with-typescript",
+    "overrides": [
+        {
+            "env": {
+                "node": true
+            },
+            "files": [
+                ".eslintrc.{js,cjs}"
+            ],
+            "parserOptions": {
+                "sourceType": "script"
+            }
+        }
     ],
-    parserOptions: {
-      ecmaVersion: 12,
-      sourceType: 'module',
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
-    rules: {
-      'no-unused-vars': 'warn',
-    },
-    globals: {
-      L: true,
-    },
-  };
-  
+    "ignorePatterns": ["dist/", "**/vendor/*.js"],
+    "rules": {
+        "@typescript-eslint/no-unsafe-member-access": "error",
+        "@typescript-eslint/no-unsafe-return": "error",
+        "@typescript-eslint/no-unsafe-assignment": "error",
+        "@typescript-eslint/no-unsafe-call": "error",
+        "@typescript-eslint/no-unsafe-argument": "error",
+        "@typescript-eslint/no-explicit-any": "error"
+    }
+}

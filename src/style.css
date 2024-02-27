@@ -30,6 +30,18 @@ h1 {
   padding: 0;
 }
 
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
 #map {
   flex: 1;
   height: 95vh;
@@ -58,13 +70,13 @@ h1 {
   overflow-y: hidden; 
 }
 
-.location-container.show {
+#location-container.show {
   bottom: -25vh;
   transition: bottom 0.5s ease;
 }
 
 @media screen and (min-width: 1025px ) {
-  .location-container {
+  #location-container {
     height: 94vh;
     width: 20vw;
     border-radius: 20px 0 0 20px;
@@ -73,14 +85,14 @@ h1 {
     overflow-x: hidden;
   }
 
-  .location-container.show {
+  #location-container.show {
     right: 0;
     bottom: 0;
     transition: right 0.5s ease;
   }
 }
 
-.city-name {
+#city-name {
   color: white;
   font: 1rem sans-serif;
   margin: 20px;
@@ -88,7 +100,7 @@ h1 {
   font-size: 18px;
 }
 
-.weather-circle {
+#weather-circle {
   top: 10px;
   right: 10px;
   height: 170px;
@@ -110,7 +122,7 @@ h1 {
 }
 
 @media screen and (min-width: 1025px ) {
-  .weather-circle {
+  #weather-circle {
     height: 200px;
     width: 200px;
     right: 0;
@@ -118,7 +130,7 @@ h1 {
   }
 }
 
-.daily-weather-container-overlay {
+#daily-weather-container-overlay {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -136,7 +148,7 @@ h1 {
 }
 
 @media screen and (min-width: 1025px ) {
-  .daily-weather-container-overlay {
+  #daily-weather-container-overlay {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,7 +165,7 @@ h1 {
   }
 }
 
-.daily-weather-container {
+#daily-weather-container {
   position: absolute;
   top: 0;
   width: 100%;
@@ -166,7 +178,7 @@ h1 {
 }
 
 @media screen and (min-width: 1025px ) {
-  .daily-weather-container {
+  #daily-weather-container {
     position: absolute;
     top: 0;
     width: 100%;
@@ -177,17 +189,17 @@ h1 {
   }
 }
 
-.weather {
+#weather {
   font: 1rem sans-serif;
   margin: 0;
 }
 
-.temperature {
+#temperature {
   font: 5rem sans-serif;
   margin: 0;
 }
 
-.temperature-range {
+#temperature-range {
   font: 1rem sans-serif;
   margin: 0;
 }
@@ -208,7 +220,7 @@ menu {
   padding: 0%;
 }
 
-.city-list {
+#city-list {
   height: calc(100vh - 200px);
   width: 0;
   position: fixed;
@@ -224,7 +236,7 @@ menu {
 }
 
 @media screen and (min-width: 1025px ) {
-  .city-list {
+  #city-list {
     right: auto;
     left: 0;
     border-bottom-left-radius: 0;
@@ -234,22 +246,26 @@ menu {
   }
 }
 
-.city-list a {
+#city-list button {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 20px;
   color: #fff;
   display: block;
   transition: 0.3s;
+  width: 100%;
+  text-align: left;
+
 }
 
-.city-list a:hover {
+#city-list button:hover {
   color: whitesmoke;
   cursor: pointer;
   background-color: #2680c2;
 }
 
-.city-list .closebtn {
+#city-list .close-button {
+  color: white;
   position: absolute;
   top: 0;
   right: 25px;
@@ -257,7 +273,7 @@ menu {
   margin-left: 50px;
 }
 
-.city-list .closebtn:hover{
+#city-list .close-button:hover{
   background-color: transparent;
   color: grey;
 }
