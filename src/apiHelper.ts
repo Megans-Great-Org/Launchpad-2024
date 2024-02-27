@@ -1,7 +1,5 @@
 import { CityInterface, CurrentWeatherDataInterface, HourlyWeatherDataInterface, WeatherDataResponseInterface } from '././interfaces';
 
-
-
 export async function getWeatherData(city : CityInterface): Promise<[CurrentWeatherDataInterface, HourlyWeatherDataInterface]>{
 	const baseUrl = 'https://api.open-meteo.com/v1/forecast';
 		

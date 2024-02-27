@@ -31,7 +31,7 @@ async function setWeather(city: CityInterface): Promise<void> {
       populateHourlyWeather(hourlyWeatherData, currentWeatherData);
       toggleWeatherContainer();
   } catch (error) {
-      throw error;
+      console.error(error);
   }
 }
 

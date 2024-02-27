@@ -1,5 +1,5 @@
 import 'leaflet/dist/leaflet.css';
-import L, {Map} from "leaflet";
+import L from "leaflet";
 import { CityInterface} from '././interfaces';
 
 const redIcon = L.icon({
@@ -16,7 +16,7 @@ const redIcon = L.icon({
 let customMarker = L.marker([0, 0], { icon: redIcon });
 
 export function initializeMap(): L.Map {
-    const map = new Map('map').setView([-30.5595, 22.9375], 5); //set view to South Africa
+    const map = new L.Map('map').setView([-30.5595, 22.9375], 5); //set view to South Africa
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -43,7 +43,7 @@ export function addPinsToMap(map: L.Map, cities: CityInterface[], weatherCallbac
   });
 }
 
-export function dropPinClickCallback(map: Map, on: boolean, weatherCallback: (city: CityInterface) => void): void {
+export function dropPinClickCallback(map: L.Map, on: boolean, weatherCallback: (city: CityInterface) => void): void {
   if (on) {
     map.on('click', function (event) {
       customMarker.remove();
