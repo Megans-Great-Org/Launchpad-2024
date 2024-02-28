@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  font-family:monospace, monaco;
+  font-family: monospace, monaco;
 }
 
 html,
@@ -67,7 +67,7 @@ button {
   justify-content: center;
   align-items: center;
   transition: bottom 0.5s ease;
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
 #location-container.show {
@@ -75,7 +75,7 @@ button {
   transition: bottom 0.5s ease;
 }
 
-@media screen and (min-width: 1025px ) {
+@media screen and (min-width: 1025px) {
   #location-container {
     height: 94vh;
     width: 20vw;
@@ -121,7 +121,7 @@ button {
   color: white;
 }
 
-@media screen and (min-width: 1025px ) {
+@media screen and (min-width: 1025px) {
   #weather-circle {
     height: 200px;
     width: 200px;
@@ -144,10 +144,10 @@ button {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-top-right-radius: 0;
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
-@media screen and (min-width: 1025px ) {
+@media screen and (min-width: 1025px) {
   #daily-weather-container-overlay {
     display: flex;
     justify-content: center;
@@ -171,20 +171,20 @@ button {
   width: 100%;
   height: 35vh;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
   border-top-left-radius: 20px;
   border-top-right-radius: 0;
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
-@media screen and (min-width: 1025px ) {
+@media screen and (min-width: 1025px) {
   #daily-weather-container {
     position: absolute;
     top: 0;
     width: 100%;
     height: 60%;
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
     border-top-right-radius: 0;
   }
 }
@@ -235,7 +235,7 @@ menu {
   border-top-left-radius: 20px;
 }
 
-@media screen and (min-width: 1025px ) {
+@media screen and (min-width: 1025px) {
   #city-list {
     right: auto;
     left: 0;
@@ -255,7 +255,6 @@ menu {
   transition: 0.3s;
   width: 100%;
   text-align: left;
-
 }
 
 #city-list button:hover {
@@ -273,7 +272,7 @@ menu {
   margin-left: 50px;
 }
 
-#city-list .close-button:hover{
+#city-list .close-button:hover {
   background-color: transparent;
   color: grey;
 }
@@ -288,7 +287,7 @@ menu {
   align-items: center;
 }
 
-@media screen and (min-width: 1025px ) {
+@media screen and (min-width: 1025px) {
   .buttons-container {
     right: auto;
     left: 50px;
@@ -354,14 +353,14 @@ menu {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(#F8C68C, yellow);
+  background: linear-gradient(#f8c68c, yellow);
   height: 25vh;
   width: 100%;
   z-index: 2000;
   bottom: 0;
 }
 
-@media screen and (min-width: 1025px ) {
+@media screen and (min-width: 1025px) {
   #hourly-weather-container {
     height: 40vh;
   }
@@ -372,7 +371,7 @@ menu {
   overflow-x: auto;
 }
 
-.hourly-weather { 
+.hourly-weather {
   display: flex;
   flex-direction: column;
   justify-content: center;
