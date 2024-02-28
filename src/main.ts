@@ -43,7 +43,7 @@ async function setWeather(city: CityInterface): Promise<void> {
       });
 
   } catch (error) {
-      console.error('Weather bservable error', error);
+      console.error(error);
   }
 }
 
