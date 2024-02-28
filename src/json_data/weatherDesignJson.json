@@ -1,27 +1,27 @@
 {
-  "0": {
-    "image": "public/backgrounds/clear.jpeg",
-    "colour": "#C9A30E",
-    "blendColour": "yellow"
-  },
-  "1": {
-    "image": "public/backgrounds/partly-clouds.jpeg",
-    "colour": "#4296BA",
-    "blendColour": "#ACDFF4"
-  },
-  "2": {
-    "image": "public/backgrounds/fog.jpeg",
-    "colour": "#D28491",
-    "blendColour": "#F2D4D6"
-  },
-  "3": {
-    "image": "public/backgrounds/rain.jpg",
-    "colour": "#348CB4",
-    "blendColour": "#79B2CD"
-  },
-  "4": {
-    "image": "public/backgrounds/thunder-storm.jpeg",
-    "colour": "#556C74",
-    "blendColour": "#D28491"
-  }
-}
+    "0": {
+        "image": "public/backgrounds/clear.jpeg",
+        "colour": "#C9A30E",
+        "blendColour": "yellow"
+    },
+    "1": {
+        "image": "public/backgrounds/partly-clouds.jpeg",
+        "colour": "#4296BA",
+        "blendColour": "#ACDFF4"
+    },
+    "2": {
+        "image": "public/backgrounds/fog.jpeg",
+        "colour": "#D28491",
+        "blendColour": "#F2D4D6"
+    },
+    "3": {
+        "image": "public/backgrounds/rain.jpg",
+        "colour": "#348CB4",
+        "blendColour": "#79B2CD"
+    },
+    "4": {
+        "image": "public/backgrounds/thunder-storm.jpeg",
+        "colour": "#556C74",
+        "blendColour": "#D28491"
+    }
+  } 
