@@ -1,10 +1,4 @@
-import {
-  CityInterface,
-  CurrentWeatherDataInterface,
-  HourlyWeatherDataInterface,
-  WeatherInfoJsonInterface,
-  WeatherDesignJsonInterface,
-} from './interfaces';
+import {CityInterface, CurrentWeatherDataInterface, HourlyWeatherDataInterface, WeatherInfoJsonInterface, WeatherDesignJsonInterface} from "./interfaces"
 import weatherDesignJson from './json_data/weatherDesignJson.json';
 import weatherInfoJson from './json_data/weatherInfoJson.json';
 
@@ -13,12 +7,9 @@ addDropPinClickListener(() => {
   toggleMapHandPointer();
 });
 
-export function populateCurrentWeather(
-  currentWeatherData: CurrentWeatherDataInterface,
-  city: CityInterface,
-) {
+export function populateCurrentWeather(currentWeatherData: CurrentWeatherDataInterface, city: CityInterface) {
   const locationContainer = document.getElementById('location-container');
-  locationContainer ? locationContainer.classList.remove('show') : 0;
+  (locationContainer) ?  locationContainer.classList.remove('show') : 0;
 
   const weatherInfo: WeatherInfoJsonInterface = weatherInfoJson;
   const weatherDesign: WeatherDesignJsonInterface = weatherDesignJson;
@@ -29,40 +20,30 @@ export function populateCurrentWeather(
   if (name) name.innerText = city.city_name.toUpperCase();
 
   const temperature = document.getElementById('temperature');
-  if (temperature)
-    temperature.innerText = `${Math.round(currentWeatherData.temperature)}°`;
+  if (temperature) temperature.innerText = `${Math.round(currentWeatherData.temperature)}°`;
 
   const weather = document.getElementById('weather');
   if (weather) weather.innerText = weatherCondition.day.description;
 
   const weatherContainer = document.getElementById('daily-weather-container');
-  if (weatherContainer)
-    weatherContainer.style.backgroundImage = `url(${weatherDesign[weatherCondition.designNumber].image})`;
+  if (weatherContainer) weatherContainer.style.backgroundImage = `url(${weatherDesign[weatherCondition.designNumber].image})`;
 
   const weatherCircle = document.getElementById('weather-circle');
-  if (weatherCircle)
-    weatherCircle.style.backgroundColor =
-      weatherDesign[weatherCondition.designNumber].colour;
+  if (weatherCircle) weatherCircle.style.backgroundColor = weatherDesign[weatherCondition.designNumber].colour;
 
   const range = document.getElementById('temperature-range');
-  if (range)
-    range.innerText = `L:  ${Math.round(currentWeatherData.temperatureMin)}° H: ${Math.round(currentWeatherData.temperatureMin)}°`;
+  if (range) range.innerText = `L:  ${Math.round(currentWeatherData.temperatureMin)}° H: ${Math.round(currentWeatherData.temperatureMin)}°`;
 }
 
-export function populateHourlyWeather(
-  hourlyWeatherData: HourlyWeatherDataInterface,
-  currentWeatherData: CurrentWeatherDataInterface,
-) {
+export function populateHourlyWeather(hourlyWeatherData : HourlyWeatherDataInterface, currentWeatherData: CurrentWeatherDataInterface,) {
   const weatherInfo: WeatherInfoJsonInterface = weatherInfoJson;
   const weatherDesign: WeatherDesignJsonInterface = weatherDesignJson;
 
   const weatherCondition = weatherInfo[currentWeatherData.weatherCode];
 
-  const hourlyWeatherContainer = document.getElementById(
-    'hourly-weather-container',
-  );
-  if (hourlyWeatherContainer)
-    hourlyWeatherContainer.style.background = `linear-gradient(${weatherDesign[weatherCondition.designNumber].colour}, ${weatherDesign[weatherCondition.designNumber].blendColour})`;
+  const hourlyWeatherContainer =  document.getElementById('hourly-weather-container');
+  if (hourlyWeatherContainer) hourlyWeatherContainer.style.background =
+  `linear-gradient(${weatherDesign[weatherCondition.designNumber].colour}, ${weatherDesign[weatherCondition.designNumber].blendColour})`;
 
   const hourlyWeatherList = document.getElementById('hourly-weather-list');
   if (hourlyWeatherList) hourlyWeatherList.innerHTML = '';
@@ -97,18 +78,18 @@ export function populateHourlyWeather(
     hourlyTemperature.innerText = `${Math.round(hourlyWeatherData.dataList[i].temperature)}°`;
     hourlyWeather.appendChild(hourlyTemperature);
 
-    hourlyWeatherList ? hourlyWeatherList.appendChild(hourlyWeather) : null;
+    (hourlyWeatherList) ? hourlyWeatherList.appendChild(hourlyWeather) : null;
   }
 }
 
 export function toggleNav(): void {
   const sidepanel = document.getElementById('city-list');
   if (sidepanel) {
-    if (sidepanel.style.width === '250px') {
-      sidepanel.style.width = '0';
-    } else {
-      sidepanel.style.width = '250px';
-    }
+      if (sidepanel.style.width === '250px') {
+          sidepanel.style.width = '0';
+      } else {
+          sidepanel.style.width = '250px';
+      }
   }
 }
 
@@ -124,49 +105,45 @@ export function addCloseButtonClickListener(): void {
 
 export function toggleClass(element: Element, className: string) {
   if (element.classList.contains(className)) {
-    element.classList.remove(className);
+      element.classList.remove(className);
   } else {
-    element.classList.add(className);
+      element.classList.add(className);
   }
 }
 
 function toggleCustomPinButton(): void {
   const dropPin = document.getElementById('drop-pin');
-  if (dropPin) toggleClass(dropPin, 'clicked-button');
+  if (dropPin) toggleClass(dropPin, "clicked-button");
 }
 
 function toggleMapHandPointer(): void {
   const mapContainer = document.querySelector('.leaflet-container');
-  if (mapContainer) toggleClass(mapContainer, 'hand-pointer');
+  if (mapContainer) toggleClass(mapContainer, "hand-pointer");
 }
 
 export function toggleWeatherContainer(): void {
   const locationContainer = document.getElementById('location-container');
-  if (locationContainer) toggleClass(locationContainer, 'show');
+  if (locationContainer) toggleClass(locationContainer, "show");
 }
 
 export function addDropPinClickListener(callback: () => void): void {
   const dropPin = document.getElementById('drop-pin');
   if (dropPin) {
-    dropPin.addEventListener('click', callback);
+      dropPin.addEventListener('click', callback);
   }
 }
 
-export function cityFunctionality(
-  city: CityInterface,
-  weatherCallback: (city: CityInterface) => void,
-  mapSetViewCallback: () => void,
-): void {
+export function cityFunctionality(city: CityInterface, weatherCallback: (city: CityInterface) => void, mapSetViewCallback: () => void): void {
   const cityList = document.getElementById('city-list');
   const cityButton = document.createElement('button');
   cityButton.innerText = city.city_name;
-
+  
   cityButton.addEventListener('click', function (event) {
-    toggleNav();
-    event.preventDefault();
-    mapSetViewCallback();
-    weatherCallback(city);
+      toggleNav();
+      event.preventDefault();
+      mapSetViewCallback();
+      weatherCallback(city);
   });
-
+  
   if (cityList) cityList.appendChild(cityButton);
 }
