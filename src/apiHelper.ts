@@ -27,36 +27,35 @@ export function getWeatherObservable(city: CityInterface): Observable<CombinedWe
 			switchMap(response => fromPromise<WeatherDataResponseInterface>(response.json())),
 			switchMap(data => {
 				if (
-					data?.current?.temperature_2m &&
-					data?.current?.temperature_2m &&
-					data?.daily?.temperature_2m_max.length > 0 &&
-					data?.daily?.temperature_2m_min.length > 0
+					!data?.current?.temperature_2m &&
+					!data?.current?.weather_code &&
+					!(data?.daily?.temperature_2m_max?.length > 0) &&
+					!(data?.daily?.temperature_2m_min?.length > 0)
 				) {
-					const currentWeatherData: CurrentWeatherDataInterface = {
+					throw new Error('Data is not complete or valid');
+				}
+				const currentWeatherData: CurrentWeatherDataInterface = {
 					temperature: data.current.temperature_2m,
 					temperatureMax: data.daily.temperature_2m_max[0],
 					temperatureMin: data.daily.temperature_2m_min[0],
 					weatherCode: data.current.weather_code,
-					};
+				};
 
-					const hourlyWeatherData: HourlyWeatherDataInterface = {
+				const hourlyWeatherData: HourlyWeatherDataInterface = {
 					dataList: data.hourly.temperature_2m.map((temperature, index) => {
 						return {
 						temperature,
 						weatherCode: data.hourly.weather_code[index],
 						};
 					}),
-					};
+				};
 
-					const returnValue : CombinedWeatherDataInterface = {
-						current: currentWeatherData,
-						hourly: hourlyWeatherData,
-					};
+				const returnValue : CombinedWeatherDataInterface = {
+					current: currentWeatherData,
+					hourly: hourlyWeatherData,
+				};
 
-					return of(returnValue);
-				} else {
-					throw new Error('Data is not complete or valid');
-				}
+				return of(returnValue);
 			}),
 			retry(3),
 			catchError((error) => {
