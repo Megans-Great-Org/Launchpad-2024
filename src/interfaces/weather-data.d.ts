@@ -29,3 +29,8 @@ export interface WeatherDataInterface {
         weather_code: number[];
     };
 }
+
+export interface CombinedWeatherDataInterface {
+    current: CurrentWeatherDataInterface;
+    hourly: HourlyWeatherDataInterface;
+}
