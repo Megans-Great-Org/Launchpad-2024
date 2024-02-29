@@ -17,7 +17,7 @@ export function populateCurrentWeather(currentWeatherData: CurrentWeatherDataInt
   const weatherCondition = weatherInfo[currentWeatherData.weatherCode];
 
   const name = document.getElementById('city-name');
-  if (name) name.innerText = city.city_name.toUpperCase();
+  if (name) name.innerText = city.cityName.toUpperCase();
 
   const temperature = document.getElementById('temperature');
   if (temperature) temperature.innerText = `${Math.round(currentWeatherData.temperature)}°`;
@@ -136,7 +136,7 @@ export function addDropPinClickListener(callback: () => void): void {
 export function cityFunctionality(city: CityInterface, weatherCallback: (city: CityInterface) => void, mapSetViewCallback: () => void): void {
   const cityList = document.getElementById('city-list');
   const cityButton = document.createElement('button');
-  cityButton.innerText = city.city_name;
+  cityButton.innerText = city.cityName;
   
   cityButton.addEventListener('click', function (event) {
       toggleNav();
