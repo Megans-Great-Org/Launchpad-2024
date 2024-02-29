@@ -26,7 +26,7 @@ function addCustomPindropFunctionality(map: L.Map): void {
 
 let weatherSubscription$: Subscription | null = null;
 
-async function setWeather(city: CityInterface): Promise<void> {
+function setWeather(city: CityInterface) {
   try {
     if (weatherSubscription$) {
         weatherSubscription$.unsubscribe();

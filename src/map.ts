@@ -30,7 +30,7 @@ export function addPinsToMap(map: L.Map, cities: CityInterface[], weatherCallbac
   cities.forEach((city) => {
     const marker = L.marker([city.lat, city.lng], {
         riseOnHover: true,
-        title: city.city_name,
+        title: city.cityName,
         autoPanOnFocus: true,
     }).addTo(map);
     marker.options.riseOnHover = true;
@@ -51,7 +51,7 @@ export function dropPinClickCallback(map: L.Map, on: boolean, weatherCallback: (
       const city = {
         lat: event.latlng.lat,
         lng: event.latlng.lng,
-        city_name: 'New Location',
+        cityName: 'New Location',
       };
       weatherCallback(city);
     });
