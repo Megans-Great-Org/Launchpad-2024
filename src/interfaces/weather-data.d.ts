@@ -33,4 +33,5 @@ export interface WeatherDataResponseInterface {
 export interface CombinedWeatherDataInterface {
     current: CurrentWeatherDataInterface;
     hourly: HourlyWeatherDataInterface;
+    cityName: string;
 }

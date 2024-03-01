@@ -7,7 +7,7 @@ addDropPinClickListener(() => {
   toggleMapHandPointer();
 });
 
-export function populateCurrentWeather(currentWeatherData: CurrentWeatherDataInterface, city: CityInterface) {
+export function populateCurrentWeather(currentWeatherData: CurrentWeatherDataInterface, cityName: string) {
   const locationContainer = document.getElementById('location-container');
   (locationContainer) ?  locationContainer.classList.remove('show') : 0;
 
@@ -17,7 +17,7 @@ export function populateCurrentWeather(currentWeatherData: CurrentWeatherDataInt
   const weatherCondition = weatherInfo[currentWeatherData.weatherCode];
 
   const name = document.getElementById('city-name');
-  if (name) name.innerText = city.cityName.toUpperCase();
+  if (name) name.innerText = cityName.toUpperCase();
 
   const temperature = document.getElementById('temperature');
   if (temperature) temperature.innerText = `${Math.round(currentWeatherData.temperature)}°`;

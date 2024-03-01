@@ -1,9 +1,8 @@
 import citiesJson from './json_data/citiesJson.json';
 import { initializeMap, addPinsToMap, dropPinClickCallback, mapSetViewCallback } from './map.ts';
 import { addListButtonClickListener, addCloseButtonClickListener, addDropPinClickListener, populateCurrentWeather, populateHourlyWeather, toggleWeatherContainer, cityFunctionality } from './domManipulation.ts';
-import { getWeatherObservable } from './apiHelper.ts';
+import { updateCitySubject$, weatherData$ } from './apiHelper.ts';
 import { CityInterface } from './interfaces';
-import { Subscription } from 'rxjs';
 import './style.css';
 
 const map = initializeMap();
@@ -24,27 +23,14 @@ function addCustomPindropFunctionality(map: L.Map): void {
   });
 } 
 
-let weatherSubscription$: Subscription | null = null;
+weatherData$.subscribe((data)=> {
+  populateCurrentWeather(data.current, data.cityName);
+  populateHourlyWeather(data.hourly, data.current);
+  toggleWeatherContainer();
+})
 
 function setWeather(city: CityInterface) {
-  try {
-    if (weatherSubscription$) {
-        weatherSubscription$.unsubscribe();
-    }
-    weatherSubscription$ = getWeatherObservable(city).subscribe({
-          next: data => {
-              populateCurrentWeather(data.current, city);
-              populateHourlyWeather(data.hourly, data.current);
-              toggleWeatherContainer();
-          },
-          error: (error) => {
-              console.error('Fetch Error', error);
-          },
-      });
-
-  } catch (error) {
-      console.error(error);
-  }
+  updateCitySubject$.next(city);
 }
 
 function addPinsFunctionality(map: L.Map): void {
