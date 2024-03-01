@@ -1,7 +1,7 @@
 import citiesJson from './json_data/citiesJson.json';
 import { initializeMap, addPinsToMap, dropPinClickCallback, mapSetViewCallback } from './map.ts';
 import { addListButtonClickListener, addCloseButtonClickListener, addDropPinClickListener, populateCurrentWeather, populateHourlyWeather, toggleWeatherContainer, cityFunctionality } from './domManipulation.ts';
-import getWeatherData from './apiHelper.ts';
+import { updateCitySubject$, weatherData$ } from './apiHelper.ts';
 import { CityInterface } from './interfaces';
 import './style.css';
 
@@ -23,16 +23,14 @@ function addCustomPindropFunctionality(map: L.Map): void {
   });
 } 
 
-async function setWeather(city: CityInterface): Promise<void> {
+weatherData$.subscribe((data)=> {
+  populateCurrentWeather(data.current, data.cityName);
+  populateHourlyWeather(data.hourly, data.current);
   toggleWeatherContainer();
-  try {
-      const [currentWeatherData, hourlyWeatherData] = await getWeatherData(city);
-      populateCurrentWeather(currentWeatherData, city);
-      populateHourlyWeather(hourlyWeatherData, currentWeatherData);
-      toggleWeatherContainer();
-  } catch (error) {
-      console.error(error);
-  }
+})
+
+function setWeather(city: CityInterface) {
+  updateCitySubject$.next(city);
 }
 
 function addPinsFunctionality(map: L.Map): void {
