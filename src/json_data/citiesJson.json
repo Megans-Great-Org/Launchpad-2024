@@ -1,15 +1,14 @@
 [
-    { "lat": -26.202, "lng": 28.044, "cityName": "Johannesburg" },
-    { "lat": -33.926, "lng": 18.423, "cityName": "Cape Town" },
-    { "lat": -29.858, "lng": 31.029, "cityName": "Durban" },
-    { "lat": -25.745, "lng": 28.188, "cityName": "Pretoria" },
-    { "lat": -33.961, "lng": 25.615, "cityName": "Port Elizabeth" },
-    { "lat": -29.121, "lng": 26.214, "cityName": "Bloemfontein" },
-    { "lat": -33.015, "lng": 27.912, "cityName": "East London" },
-    { "lat": -29.617, "lng": 30.393, "cityName": "Pietermaritzburg" },
-    { "lat": -26.268, "lng": 27.858, "cityName": "Soweto" },
-    { "lat": -26.188, "lng": 28.321, "cityName": "Benoni" },
-    { "lat": -25.996, "lng": 28.227, "cityName": "Tembisa" },
-    { "lat": -26.673, "lng": 27.926, "cityName": "Vereeniging" }
-  ]
-  
+  { "lat": -26.202, "lng": 28.044, "cityName": "Johannesburg" },
+  { "lat": -33.926, "lng": 18.423, "cityName": "Cape Town" },
+  { "lat": -29.858, "lng": 31.029, "cityName": "Durban" },
+  { "lat": -25.745, "lng": 28.188, "cityName": "Pretoria" },
+  { "lat": -33.961, "lng": 25.615, "cityName": "Port Elizabeth" },
+  { "lat": -29.121, "lng": 26.214, "cityName": "Bloemfontein" },
+  { "lat": -33.015, "lng": 27.912, "cityName": "East London" },
+  { "lat": -29.617, "lng": 30.393, "cityName": "Pietermaritzburg" },
+  { "lat": -26.268, "lng": 27.858, "cityName": "Soweto" },
+  { "lat": -26.188, "lng": 28.321, "cityName": "Benoni" },
+  { "lat": -25.996, "lng": 28.227, "cityName": "Tembisa" },
+  { "lat": -26.673, "lng": 27.926, "cityName": "Vereeniging" }
+]
