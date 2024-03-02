@@ -4,43 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>SkyGuide</title>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="/src/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script type="module" src="src/main.ts"></script>
   </head>
-  <body>  
-    <header>
-      <h1>SkyGuide</h1>
+  <body class="h-screen w-screen flex-col overflow-y-hidden overflow-x-hidden">  
+    <header class="flex align-center z-2 justify-center bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 h-12 md:h-16 shadow-md">
+      <h1 class="text-gray-50 text-lg">SkyGuide</h1>
     </header>
-    <div id="map"></div>
-    <div class="buttons-container">
+    <div id="map" class="z-0 h-full"></div>
+    <div id="button-container" class="absolute top-16 right-2 z-1 flex justify-end items-center md:top-20 md:flex-row-reverse md:justify-start md:right-auto md:left-12">
       <div class="pin-point">
-        <button class="button" id="drop-pin"><i class="fas fa-bullseye" aria-hidden="true"></i></button>
+        <button id="drop-pin" class="flex justify-center items-center border-2 border-gray-400 rounded-md text-lg h-12 w-12 mx-1 bg-white text-blue-600 md:hover:bg-blue-600 md:hover:text-white"><i class="fas fa-bullseye" aria-hidden="true"></i></button>
       </div>
       <menu>
-        <div id='city-list'>
-          <a href="javascript:void(0)" class="close-button" id="close-button">&times;</a>
+        <div id='city-list' class="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 rounded-l-2xl p-6 md:rounded-r-2xl md:rounded-l-none z-3 fixed right-0 bottom-0 pt-12 md:left-0 md:right-auto flex-row h-3/4 translate-x-64 md:-translate-x-64">
+          <button href="javascript:void(0)" id="close-button" class="text-white absolute top-0 right-4 text-lg ml-4">&times;</button>
         </div>
-        <button id='city-list-button' class="button"><i class="fas fa-list-ul" aria-hidden="true"></i></button>
+        <button id='city-list-button' class="flex justify-center items-center bg-white border-2 border-gray-400 rounded-md text-blue-600 text-lg cursor-pointer h-12 w-12 mx-1 md:hover:bg-blue-600 md:hover:text-white">
+          <i class="fas fa-list-ul" aria-hidden="true"></i>
+        </button>
       </menu>
     </div>
-    <div class="location-container" id="location-container">
-      <div id="daily-weather-container">
-        <div id="daily-weather-container-overlay">
-          <h2 id="city-name">PRETORIA</h2>
-          <div id="weather-circle">
-            <h3 id="weather">Cloudy</h3>
-            <h4 id="temperature">20*</h4>
-            <h5 id="temperature-range">L:18* H:25*</h5>
+    <div id="location-container" class="absolute z-2 flex-col shadow-lg justify-center items-center rounded-t-2xl md:rounded-t-none md:rounded-l-2xl overflow-hidden object-contain hidden h-4/5 md:h-5/6 w-screen md:w-1/4 bottom-0 md:right-0">
+      <div id="daily-weather-container" class="top-0 h-4/6 md:h-3/5 w-full bg-no-repeat bg-cover rounded-t-2xl overflow-y-hidden">
+        <div id="daily-weather-container-overlay" class="flex flex-col items-center justify-center top-0 h-full w-full bg-opacity-30 bg-black overflow-y-hidden">
+          <button id="weather-close-button" class="text-white absolute top-0 right-4 text-lg">
+            <i class="fa fa-times fa-lg m-4"></i>
+          </button>
+          <h2 id="city-name" class="text-white text-lg font-bold my-4">PRETORIA</h2>
+          <div id="weather-circle" class="text-white h-44 w-44 outline outline-8 outline-black/50 rounded-full bg-blue-500 flex flex-col items-center justify-center z-2">            
+            <h3 id="weather" class="text-lg m-0 mt-0 leading-none">Cloudy</h3>
+            <h4 id="temperature" class="text-[5rem] mt-0 leading-none">20*</h4>
+            <h5 id="temperature-range" class="text-xl leading-none">L:18* H:25*</h5>
           </div>
         </div>
       </div>
-      <div id="hourly-weather-container">
-        <div id="hourly-weather-list">
-          <div id="hourly-weather">
-          </div>
-        </div>
+      <div id="hourly-weather-container" class="text-white flex justify-center items-center h-2/5 w-full z-2 bottom-0 md:h-2/5">
+        <div id="hourly-weather-list" class="flex overflow-x-auto"></div>
       </div>
     </div>
   </body>
