@@ -31,10 +31,9 @@ addCustomPindropFunctionality(map);
 addListButtonClickListener();
 addCloseButtonClickListener();
 
-addCustomLocationButtonClickListener(setWeather, setCustomLocationCallback);
 
-const lat = localStorage.getItem("currentLat");
-const lng = localStorage.getItem("currentLng");
+const lat = localStorage.getItem("homeLat");
+const lng = localStorage.getItem("homeLng");
 if (lat !== null && lng!== null) {
   const city:CityInterface = {
     lat: parseFloat(lat),
@@ -43,6 +42,9 @@ if (lat !== null && lng!== null) {
   };
   addHomeButtonClickListener(city, setWeather);
 }
+
+addCustomLocationButtonClickListener(setWeather, setCustomLocationCallback);
+
 // addHomeButtonClickListener(setWeather, mapSetViewCallback(map));
 
 function addCustomPindropFunctionality(map: L.Map): void {
@@ -75,8 +77,8 @@ function setCustomLocationCallback(): CityInterface {
   const lng = sessionStorage.getItem("currentLng");
   let city: CityInterface;
   if (lat !== null && lng!== null) {
-    localStorage.setItem("HomeLat", lat);
-    localStorage.setItem("HomeLng", lng);
+    localStorage.setItem("homeLat", lat);
+    localStorage.setItem("homeLng", lng);
     city =  {
       lat: parseFloat(lat),
       lng: parseFloat(lng),
@@ -91,13 +93,3 @@ function setCustomLocationCallback(): CityInterface {
     }
     return city;
 }
-
-
-//
-// button clicked?
-// set cityFunctionality
-
-// set the home button if there is anything in local storage
-// set the home button if the set home button is clicked
-
-// how to set the home button?
