@@ -1,5 +1,5 @@
 export interface CityInterface {
-    lat: number;
-    lng: number;
-    cityName: string;
-  }
+  lat: number;
+  lng: number;
+  cityName: string;
+}

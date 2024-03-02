@@ -1,6 +1,6 @@
 import 'leaflet/dist/leaflet.css';
-import L from "leaflet";
-import { CityInterface} from '././interfaces';
+import L from 'leaflet';
+import { CityInterface } from '././interfaces';
 
 const redIcon = L.icon({
   iconUrl: 'public/red-pin.png',
@@ -16,34 +16,42 @@ const redIcon = L.icon({
 let customMarker = L.marker([0, 0], { icon: redIcon });
 
 export function initializeMap(): L.Map {
-    const map = new L.Map('map').setView([-30.5595, 22.9375], 5); //set view to South Africa
+  const map = new L.Map('map').setView([-30.5595, 22.9375], 5); //set view to South Africa
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap',
-    }).addTo(map);
+  }).addTo(map);
 
-    return map;
+  return map;
 }
 
-export function addPinsToMap(map: L.Map, cities: CityInterface[], weatherCallback: (city: CityInterface) => void): void {
+export function addPinsToMap(
+  map: L.Map,
+  cities: CityInterface[],
+  weatherCallback: (city: CityInterface) => void,
+): void {
   cities.forEach((city) => {
     const marker = L.marker([city.lat, city.lng], {
-        riseOnHover: true,
-        title: city.cityName,
-        autoPanOnFocus: true,
+      riseOnHover: true,
+      title: city.cityName,
+      autoPanOnFocus: true,
     }).addTo(map);
     marker.options.riseOnHover = true;
-    
+
     marker.on('click', function () {
-        const { lat, lng } = marker.getLatLng();
-        map.setView([lat, lng], map.getZoom());
-        weatherCallback(city);
+      const { lat, lng } = marker.getLatLng();
+      map.setView([lat, lng], map.getZoom());
+      weatherCallback(city);
     });
   });
 }
 
-export function dropPinClickCallback(map: L.Map, on: boolean, weatherCallback: (city: CityInterface) => void): void {
+export function dropPinClickCallback(
+  map: L.Map,
+  on: boolean,
+  weatherCallback: (city: CityInterface) => void,
+): void {
   if (on) {
     map.on('click', function (event) {
       customMarker.remove();
@@ -55,15 +63,14 @@ export function dropPinClickCallback(map: L.Map, on: boolean, weatherCallback: (
       };
       weatherCallback(city);
     });
-  } 
-  else {
+  } else {
     map.off('click');
     customMarker.remove();
   }
 }
 
-export function mapSetViewCallback(map: L.Map, city: CityInterface){
+export function mapSetViewCallback(map: L.Map, city: CityInterface) {
   return function () {
     map.setView([city.lat, city.lng], map.getZoom());
-  }
+  };
 }
