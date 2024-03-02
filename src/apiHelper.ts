@@ -35,7 +35,7 @@ export const weatherData$ = combineLatest([
 
     return {
       url: `${baseUrl}?${params.toString()}`,
-      cityName: city.cityName,
+      city: city,
     };
   }),
   switchMap((cityFetchMetadata) =>
@@ -71,7 +71,7 @@ export const weatherData$ = combineLatest([
         const returnValue: CombinedWeatherDataInterface = {
           current: currentWeatherData,
           hourly: hourlyWeatherData,
-          cityName: cityFetchMetadata.cityName,
+          city: cityFetchMetadata.city,
         };
 
         return of(returnValue);
