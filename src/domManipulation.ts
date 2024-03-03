@@ -8,17 +8,38 @@ import {
 import weatherDesignJson from './json_data/weatherDesignJson.json';
 import weatherInfoJson from './json_data/weatherInfoJson.json';
 
-addDropPinClickListener(() => {
-  toggleMapHandPointer();
-});
+addWeatherCloseButtonClickListener();
 
-const weatherCloseButton = document.getElementById('weather-close-button');
-if (weatherCloseButton)
-  weatherCloseButton.addEventListener('click', hideWeatherContainer);
+export function addHomeButtonClickListener(city: CityInterface, weatherCallback: (city: CityInterface) => void) {
+  const homeButton = document.getElementById('home-button');
+  if (homeButton) {
+    homeButton.addEventListener('click', function(event){
+      toggleNav();
+      event.preventDefault();
+      weatherCallback(city);
+    });
+  }
+}
+
+export function addCustomLocationButtonClickListener(weatherCallback: (city: CityInterface) => void, getCoordinatesCallback: () => CityInterface) {
+  const customLocationButton = document.getElementById('add-custom-location');
+  if (customLocationButton){ 
+    customLocationButton.addEventListener('click', function(){
+      const city = getCoordinatesCallback();
+      addHomeButtonClickListener(city, weatherCallback);
+    });
+  }
+}
+
+function addWeatherCloseButtonClickListener(): void {
+  const weatherCloseButton = document.getElementById('weather-close-button');
+  if (weatherCloseButton)
+    weatherCloseButton.addEventListener('click', hideWeatherContainer);
+}
 
 export function populateCurrentWeather(
   currentWeatherData: CurrentWeatherDataInterface,
-  cityName: string,
+  city: CityInterface,
 ) {
   const weatherInfo: WeatherInfoJsonInterface = weatherInfoJson;
   const weatherDesign: WeatherDesignJsonInterface = weatherDesignJson;
@@ -26,7 +47,16 @@ export function populateCurrentWeather(
   const weatherCondition = weatherInfo[currentWeatherData.weatherCode];
 
   const name = document.getElementById('city-name');
-  if (name) name.innerText = cityName.toUpperCase();
+  if (name) name.innerText = city.cityName.toUpperCase();
+
+  if (city.cityName === 'Home') {
+    const homeButton = document.getElementById('add-custom-location');
+    if (homeButton) homeButton.classList.add('hidden');
+  }
+  else {
+    const customLocationButton = document.getElementById('add-custom-location');
+    customLocationButton?.classList.remove('hidden');
+  }
 
   const temperature = document.getElementById('temperature');
   if (temperature)
@@ -97,7 +127,7 @@ export function populateHourlyWeather(
     hourlyTemperature.innerText = `${Math.round(hourlyWeatherData.dataList[i].temperature)}°`;
     hourlyWeather.appendChild(hourlyTemperature);
 
-    hourlyWeatherList ? hourlyWeatherList.appendChild(hourlyWeather) : null;
+    if(hourlyWeatherList) hourlyWeatherList.appendChild(hourlyWeather);
   }
 }
 
@@ -155,11 +185,6 @@ if (customPinButton)
     this.classList.toggle('cursor-pointer');
   });
 
-function toggleMapHandPointer(): void {
-  const mapContainer = document.querySelector('.leaflet-container');
-  if (mapContainer) toggleClass(mapContainer, 'hand-pointer');
-}
-
 export function hideWeatherContainer(): void {
   const locationContainer = document.getElementById('location-container');
   if (locationContainer) {
@@ -190,6 +215,8 @@ export function cityFunctionality(
 ): void {
   const cityList = document.getElementById('city-list');
   const cityButton = document.createElement('button');
+  cityButton.className =
+  'hover:bg-transparent/10 text-white p-2 block hover:cursor-pointer text-lg md:text-xl w-full text-left px-8';
   cityButton.innerText = city.cityName;
 
   cityButton.addEventListener('click', function (event) {
@@ -201,3 +228,5 @@ export function cityFunctionality(
 
   if (cityList) cityList.appendChild(cityButton);
 }
+
+

@@ -2,21 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#city-list button {
-  padding: 8px 8px 8px 32px;
-  font-size: 20px;
-  color: #fff;
-  display: block;
-  width: 100%;
-  text-align: left;
-}
-
-#city-list button:hover {
-  color: gray;
-  cursor: pointer;
-  background-color: #2680c2;
-}
-
 .hourly-weather {
   display: flex;
   flex-direction: column;
