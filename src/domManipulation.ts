@@ -22,7 +22,7 @@ export function addHomeButtonClickListener(city: CityInterface, weatherCallback:
 }
 
 export function addCustomLocationButtonClickListener(weatherCallback: (city: CityInterface) => void, getCoordinatesCallback: () => CityInterface) {
-  const customLocationButton = document.getElementById('add-custom-location');
+  const customLocationButton = document.getElementById('add-custom-location-button');
   if (customLocationButton){ 
     customLocationButton.addEventListener('click', function(){
       const city = getCoordinatesCallback();
@@ -50,11 +50,11 @@ export function populateCurrentWeather(
   if (name) name.innerText = city.cityName.toUpperCase();
 
   if (city.cityName === 'Home') {
-    const homeButton = document.getElementById('add-custom-location');
+    const homeButton = document.getElementById('add-custom-location-button');
     if (homeButton) homeButton.classList.add('hidden');
   }
   else {
-    const customLocationButton = document.getElementById('add-custom-location');
+    const customLocationButton = document.getElementById('add-custom-location-button');
     customLocationButton?.classList.remove('hidden');
   }
 
@@ -140,7 +140,7 @@ export function toggleNav(): void {
 }
 
 export function addListButtonClickListener(): void {
-  const listButton = document.getElementById('city-list-button');
+  const listButton = document.getElementById('city-menu-button');
   if (listButton) listButton.addEventListener('click', toggleNav);
   if (listButton)
     listButton.addEventListener('click', function () {
@@ -157,7 +157,7 @@ export function addListButtonClickListener(): void {
 }
 
 export function addCloseButtonClickListener(): void {
-  const closeButton = document.getElementById('close-button');
+  const closeButton = document.getElementById('city-menu-close-button');
   if (closeButton) closeButton.addEventListener('click', toggleNav);
 }
 
@@ -169,7 +169,7 @@ export function toggleClass(element: Element, className: string) {
   }
 }
 
-const customPinButton = document.getElementById('drop-pin');
+const customPinButton = document.getElementById('drop-pin-button');
 if (customPinButton)
   customPinButton.addEventListener('click', function () {
     this.classList.toggle('md:hover-white');
@@ -202,7 +202,7 @@ export function showWeatherContainer(): void {
 }
 
 export function addDropPinClickListener(callback: () => void): void {
-  const dropPin = document.getElementById('drop-pin');
+  const dropPin = document.getElementById('drop-pin-button');
   if (dropPin) {
     dropPin.addEventListener('click', callback);
   }
