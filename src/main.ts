@@ -45,8 +45,6 @@ if (lat !== null && lng!== null) {
 
 addCustomLocationButtonClickListener(setWeather, setCustomLocationCallback);
 
-// addHomeButtonClickListener(setWeather, mapSetViewCallback(map));
-
 function addCustomPindropFunctionality(map: L.Map): void {
   addDropPinClickListener(() => {
     customButtonOn = !customButtonOn;
@@ -67,9 +65,9 @@ function setWeather(city: CityInterface) {
 }
 
 function addPinsFunctionality(map: L.Map): void {
-  cities.forEach((city) => {
+  for (const city of cities) {
     cityFunctionality(city, setWeather, mapSetViewCallback(map, city));
-  });
+  }
 }
 
 function setCustomLocationCallback(): CityInterface {
