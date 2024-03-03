@@ -31,7 +31,7 @@ export function addPinsToMap(
   cities: CityInterface[],
   weatherCallback: (city: CityInterface) => void,
 ): void {
-  cities.forEach((city) => {
+  for (const city of cities) {
     const marker = L.marker([city.lat, city.lng], {
       riseOnHover: true,
       title: city.cityName,
@@ -44,7 +44,7 @@ export function addPinsToMap(
       map.setView([lat, lng], map.getZoom());
       weatherCallback(city);
     });
-  });
+  }
 }
 
 export function dropPinClickCallback(

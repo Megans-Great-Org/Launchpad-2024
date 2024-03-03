@@ -134,39 +134,33 @@ export function populateHourlyWeather(
 export function toggleNav(): void {
   const sidepanel = document.getElementById('city-list');
   if (sidepanel) {
-    sidepanel.classList.toggle('translate-x-64');
-    sidepanel.classList.toggle('md:-translate-x-64');
+    sidepanel.classList.toggle('hidden');
   }
+  toggleCityListButton();
 }
 
 export function addListButtonClickListener(): void {
   const listButton = document.getElementById('city-menu-button');
   if (listButton) listButton.addEventListener('click', toggleNav);
-  if (listButton)
-    listButton.addEventListener('click', function () {
-      this.classList.toggle('md:hover:white');
-      this.classList.toggle('md:hover:bg-blue-600');
-      this.classList.toggle('bg-white');
-      this.classList.toggle('text-blue-600');
+}
 
-      this.classList.toggle('md:hover:text-blue-600');
-      this.classList.toggle('md:hover:bg-white');
-      this.classList.toggle('bg-blue-600');
-      this.classList.toggle('text-white');
-    });
+function toggleCityListButton(): void {
+  const listButton = document.getElementById('city-menu-button');
+  if (!listButton) return;
+  listButton.classList.toggle('md:hover:white');
+  listButton.classList.toggle('md:hover:bg-blue-600');
+  listButton.classList.toggle('bg-white');
+  listButton.classList.toggle('text-blue-600');
+
+  listButton.classList.toggle('md:hover:text-blue-600');
+  listButton.classList.toggle('md:hover:bg-white');
+  listButton.classList.toggle('bg-blue-600');
+  listButton.classList.toggle('text-white');
 }
 
 export function addCloseButtonClickListener(): void {
   const closeButton = document.getElementById('city-menu-close-button');
   if (closeButton) closeButton.addEventListener('click', toggleNav);
-}
-
-export function toggleClass(element: Element, className: string) {
-  if (element.classList.contains(className)) {
-    element.classList.remove(className);
-  } else {
-    element.classList.add(className);
-  }
 }
 
 const customPinButton = document.getElementById('drop-pin-button');
