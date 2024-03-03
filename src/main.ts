@@ -14,7 +14,7 @@ import {
   showWeatherContainer,
   cityFunctionality,
   addHomeButtonClickListener,
-  addCustomLocationButtonClickListener
+  addCustomLocationButtonClickListener,
 } from './domManipulation.ts';
 import { updateCitySubject$, weatherData$ } from './apiHelper.ts';
 import { CityInterface } from './interfaces';
@@ -31,11 +31,10 @@ addCustomPindropFunctionality(map);
 addListButtonClickListener();
 addCloseButtonClickListener();
 
-
-const lat = localStorage.getItem("homeLat");
-const lng = localStorage.getItem("homeLng");
-if (lat !== null && lng!== null) {
-  const city:CityInterface = {
+const lat = localStorage.getItem('homeLat');
+const lng = localStorage.getItem('homeLng');
+if (lat !== null && lng !== null) {
+  const city: CityInterface = {
     lat: parseFloat(lat),
     lng: parseFloat(lng),
     cityName: 'Home',
@@ -60,8 +59,8 @@ weatherData$.subscribe((data) => {
 
 function setWeather(city: CityInterface) {
   updateCitySubject$.next(city);
-  sessionStorage.setItem("currentLat", city.lat.toString());
-  sessionStorage.setItem("currentLng", city.lng.toString());
+  sessionStorage.setItem('currentLat', city.lat.toString());
+  sessionStorage.setItem('currentLng', city.lng.toString());
 }
 
 function addPinsFunctionality(map: L.Map): void {
@@ -71,23 +70,23 @@ function addPinsFunctionality(map: L.Map): void {
 }
 
 function setCustomLocationCallback(): CityInterface {
-  const lat = sessionStorage.getItem("currentLat");
-  const lng = sessionStorage.getItem("currentLng");
+  const lat = sessionStorage.getItem('currentLat');
+  const lng = sessionStorage.getItem('currentLng');
   let city: CityInterface;
-  if (lat !== null && lng!== null) {
-    localStorage.setItem("homeLat", lat);
-    localStorage.setItem("homeLng", lng);
-    city =  {
+  if (lat !== null && lng !== null) {
+    localStorage.setItem('homeLat', lat);
+    localStorage.setItem('homeLng', lng);
+    city = {
       lat: parseFloat(lat),
       lng: parseFloat(lng),
       cityName: 'Home',
-    } 
+    };
   } else {
-      city = {
-        lat: 0,
-        lng: 0,
-        cityName: 'Home',
-      }
-    }
-    return city;
+    city = {
+      lat: 0,
+      lng: 0,
+      cityName: 'Home',
+    };
+  }
+  return city;
 }
