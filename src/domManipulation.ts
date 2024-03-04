@@ -109,6 +109,8 @@ export function populateHourlyWeather(
   const now = new Date();
   const currentHour = now.getHours();
 
+
+  // todo: make 24 set components, an then just dynamically change their data
   for (let i = currentHour; i < hourlyWeatherData.dataList.length; i += 1) {
     const hourlyWeatherCode = hourlyWeatherData.dataList[i].weatherCode;
 
@@ -121,6 +123,10 @@ export function populateHourlyWeather(
       'icon',
       weatherInfo[hourlyWeatherCode].day.image,
     );
+    weatherCardElement.setAttribute(
+      'alt',
+      weatherInfo[hourlyWeatherCode].day.description,
+    )
     weatherCardElement.setAttribute(
       'hourly-temperature',
       `${Math.round(hourlyWeatherData.dataList[i].temperature)}°C`,

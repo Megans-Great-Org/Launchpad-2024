@@ -1,5 +1,5 @@
 class WeatherCard extends HTMLElement {
-  static observedAttributes = ['time', 'icon', 'hourly-temperature'];
+  static observedAttributes = ['time', 'icon', 'hourly-temperature', 'alt'];
 
   constructor() {
     super();
@@ -42,18 +42,20 @@ class WeatherCard extends HTMLElement {
     </div>
     `;
   }
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+  attributeChangedCallback(name: string, oldValue: string|null, newValue: string) {
     const time = this.shadowRoot?.getElementById('time');
     const icon = this.shadowRoot?.getElementById(
       'weather-icon',
     ) as HTMLImageElement;
     const hourlyTemperature =
       this.shadowRoot?.getElementById('hourly-temperature');
-    if (name === 'time' && time) {
+    if (name === 'time' && time && oldValue !== newValue) {
       time.innerText = newValue;
-    } else if (name === 'icon' && icon) {
+    } else if (name === 'icon' && icon && oldValue !== newValue) {
       icon.src = newValue;
-    } else if (name === 'hourly-temperature' && hourlyTemperature) {
+    } else if (name === 'alt' && icon && oldValue !== newValue) {
+      icon.alt = newValue;
+    } else if (name === 'hourly-temperature' && hourlyTemperature && oldValue !== newValue) {
       hourlyTemperature.innerText = newValue;
     }
   }
