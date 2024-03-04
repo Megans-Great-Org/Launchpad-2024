@@ -16,6 +16,7 @@ export function addHomeButtonClickListener(
 ) {
   const homeButton = document.getElementById('home-button');
   if (homeButton) {
+    homeButton.classList.remove('hidden');
     homeButton.addEventListener('click', function (event) {
       toggleNav();
       event.preventDefault();
@@ -152,13 +153,13 @@ export function addListButtonClickListener(): void {
 function toggleCityListButton(): void {
   const listButton = document.getElementById('city-menu-button');
   if (!listButton) return;
-  listButton.classList.toggle('md:hover:white');
-  listButton.classList.toggle('md:hover:bg-blue-600');
+  listButton.classList.toggle('md:hover-white');
+  listButton.classList.toggle('md:hover-bg-blue-600');
   listButton.classList.toggle('bg-white');
   listButton.classList.toggle('text-blue-600');
 
-  listButton.classList.toggle('md:hover:text-blue-600');
-  listButton.classList.toggle('md:hover:bg-white');
+  listButton.classList.toggle('md:hover-text-blue-600');
+  listButton.classList.toggle('md:hover-bg-white');
   listButton.classList.toggle('bg-blue-600');
   listButton.classList.toggle('text-white');
 }
